@@ -49,6 +49,8 @@ public final class ImageInfo {
     private String fromUrl;
     //
     private String fromName;
+    //
+    private String linkUrl;
 
     public long getId() {
         return id;
@@ -209,6 +211,14 @@ public final class ImageInfo {
     public void setFromName(String fromName) {
         this.fromName = fromName;
     }
+
+    public String getLinkUrl() {
+        return linkUrl;
+    }
+
+    public void setLinkUrl(String linkUrl) {
+        this.linkUrl = linkUrl;
+    }
     
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(32, 1);
@@ -232,6 +242,7 @@ public final class ImageInfo {
         map.put("mWidth", Long.toString(this.mWidth));
         map.put("fromUrl", this.fromUrl);
         map.put("fromName", this.fromName);
+        map.put("linkUrl", this.linkUrl);
         return map;
     }
     

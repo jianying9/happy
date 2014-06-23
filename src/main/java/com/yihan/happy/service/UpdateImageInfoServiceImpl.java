@@ -62,6 +62,7 @@ public class UpdateImageInfoServiceImpl implements Service {
                         entityMap.put("mHeight", Long.toString(imageInfo.getmHeight()));
                         entityMap.put("mWidth", Long.toString(imageInfo.getmWidth()));
                         entityMap.put("mPicurl", imageInfo.getmPicurl());
+                        entityMap.put("linkUrl", imageInfo.getLinkUrl());
                         this.jokeImageLocalService.insertImage(entityMap);
 //                    }
                 }

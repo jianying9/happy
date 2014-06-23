@@ -110,14 +110,17 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
                 JsonNode fromNode;
                 String fromUrl;
                 String fromName;
+                String linkUrl;
                 long comment;
                 ImageInfo imageInfo;
                 Iterator<JsonNode> jsonNodes = rootNode.iterator();
                 while (jsonNodes.hasNext()) {
                     jsonNode = jsonNodes.next();
+                    System.out.println(jsonNode);
                     id = jsonNode.get("id").getTextValue();
                     title = jsonNode.get("title").getTextValue();
                     content = jsonNode.get("content").getTextValue();
+                    linkUrl = jsonNode.get("linkurl").getTextValue();
                     urlNode = jsonNode.get("picurl");
                     picurl = urlNode.get("0").get("picurl").getTextValue();
                     height = urlNode.get("0").get("height").getLongValue();
@@ -135,14 +138,18 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
                     share = jsonNode.get("share").getLongValue();
                     fromNode = jsonNode.get("from");
                     fromUrl = fromNode.get("link").getTextValue();
-                    if(fromUrl == null) {
+                    if (fromUrl == null) {
                         fromUrl = "";
                     }
                     fromName = fromNode.get("title").getTextValue();
-                    if(fromName == null) {
+                    if (fromName == null) {
                         fromName = "";
                     }
-                    comment = jsonNode.get("comment_count").getLongValue();
+                    if(jsonNode.get("comment_count") == null) {
+                        comment = 0;
+                    } else {
+                        comment = jsonNode.get("comment_count").getLongValue();
+                    }
                     imageInfo = new ImageInfo();
                     imageInfo.setId(Long.parseLong(id));
                     imageInfo.setTitle(title);
@@ -165,6 +172,7 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
                     imageInfo.setmWidth(mWidth);
                     imageInfo.setFromUrl(fromUrl);
                     imageInfo.setFromName(fromName);
+                    imageInfo.setLinkUrl(linkUrl);
                     resultList.add(imageInfo);
                 }
             }
@@ -200,7 +208,7 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
     @Override
     public boolean existImageSource(String url) {
         boolean result = true;
-        if(url.isEmpty() == false) {
+        if (url.isEmpty() == false) {
             result = this.jokeImageSourceEntityDao.exist(url);
         }
         return result;

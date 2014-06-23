@@ -73,6 +73,9 @@ public final class JokeImageEntity extends Entity {
     //
     @RColumnConfig(desc = "中始图片宽")
     private long mWidth;
+    //
+    @RColumnConfig(desc = "原始网页链接")
+    private String linkUrl;
 
     @Override
     public String getKeyValue() {
@@ -101,6 +104,7 @@ public final class JokeImageEntity extends Entity {
         map.put("mPicurl", this.mPicurl);
         map.put("mHeight", Long.toString(this.mHeight));
         map.put("mWidth", Long.toString(this.mWidth));
+        map.put("linkUrl", this.linkUrl);
         return map;
     }
 
@@ -125,5 +129,6 @@ public final class JokeImageEntity extends Entity {
         this.mPicurl = entityMap.get("mPicurl");
         this.mHeight = Long.parseLong(entityMap.get("mHeight"));
         this.mWidth = Long.parseLong(entityMap.get("mWidth"));
+        this.linkUrl = entityMap.get("linkUrl");
     }
 }
