@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title>晗宝宝</title>
+        <script src="./libs/require/require.js"></script>
+    </head>
+    <body>
+        <script>
+            var v = new Date().getTime();
+//            var v = 9;
+            require.config({
+                packages: [
+                    {
+                        name: 'jquery',
+                        location: './libs/jquery',
+                        main: 'jquery-1.9.1'
+                    },
+                    {
+                        name: 'jquery.ui.widget',
+                        location: './libs/jquery/fileupload',
+                        main: 'jquery.ui.widget'
+                    },
+                    {
+                        name: 'jquery.fileupload',
+                        location: './libs/jquery/fileupload',
+                        main: 'jquery.fileupload'
+                    },
+                    {
+                        name: 'jquery.postmessage-transport',
+                        location: './libs/jquery/fileupload',
+                        main: 'jquery.postmessage-transport'
+                    },
+                    {
+                        name: 'jquery.xdr-transport',
+                        location: './libs/jquery/fileupload',
+                        main: 'jquery.xdr-transport'
+                    },
+                    {
+                        name: 'jquery.iframe-transport',
+                        location: './libs/jquery/fileupload',
+                        main: 'jquery.iframe-transport'
+                    },
+                    {
+                        name: 'text',
+                        location: './libs/require',
+                        main: 'text'
+                    },
+                    {
+                        name: 'yy',
+                        location: './libs/yy',
+                        main: 'yy'
+                    }
+                ],
+                paths: {
+                    'jquery.mousewheel': './libs/jquery/mousewheel/jquery.mousewheel-3.0.6'
+                },
+                shim: {
+                    'jquery.mousewheel': {
+                        deps: ['jquery'],
+                        exports: 'jQuery.fn.mousewheel'
+                    }
+                },
+                urlArgs: 'v=' + v
+            });
+            require(['yy', 'yy/module'], function(yy, module) {
+                //加载css
+                var happyLink = document.createElement("link");
+                happyLink.type = "text/css";
+                happyLink.rel = "stylesheet";
+                happyLink.href = 'stylesheets/happy.css' + '?v=' + v;
+                document.getElementsByTagName("head")[0].appendChild(sinaLink);
+
+                var yyLink = document.createElement("link");
+                yyLink.type = "text/css";
+                yyLink.rel = "stylesheet";
+                yyLink.href = './libs/yy/stylesheets/yy.css' + '?v=' + v;
+                document.getElementsByTagName("head")[0].appendChild(yyLink);
+                yy.setConfig({
+                    httpServer: 'http://115.29.137.120/happy/service.io'
+                });
+            });
+        </script>
+    </body>
+</html>

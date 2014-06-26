@@ -4,8 +4,8 @@
         "describe": "运行模式:SERVER，DEVELOPMENT，UNIT_TEST"
     },
     "annotation.scan.packages": {
-        "value": "com.yihan",
-        "describe": "扫描注解包名集合，例如com.wolf"
+        "value": "com.yihan.happy",
+        "describe": "扫描注解包名集合"
     },
     "task.core.pool.size": {
         "value": "10",
@@ -16,7 +16,7 @@
         "describe": "线程最大存活数量"
     },
     "redis.server.host": {
-        "value": "jianying9",
+        "value": "127.0.0.1",
         "describe": "redis服务器ip"
     },
     "redis.server.port": {
@@ -34,5 +34,9 @@
     "file.path": {
         "value": "/data/file",
         "describe": "redis连接池最小连接数"
+    },
+    "websocket": {
+        "value": "off",
+        "describe": "开启websocket"
     }
 }

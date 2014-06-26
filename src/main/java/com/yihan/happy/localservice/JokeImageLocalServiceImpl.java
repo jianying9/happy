@@ -116,7 +116,7 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
                 Iterator<JsonNode> jsonNodes = rootNode.iterator();
                 while (jsonNodes.hasNext()) {
                     jsonNode = jsonNodes.next();
-                    System.out.println(jsonNode);
+//                    System.out.println(jsonNode);
                     id = jsonNode.get("id").getTextValue();
                     title = jsonNode.get("title").getTextValue();
                     content = jsonNode.get("content").getTextValue();

@@ -6,5 +6,5 @@ package com.yihan.happy.config;
  */
 public class ActionGroupNames {
     
-    public final static String IMAGE_SPIDER = "图片爬虫接口";
+    public final static String IMAGE = "图片接口";
 }

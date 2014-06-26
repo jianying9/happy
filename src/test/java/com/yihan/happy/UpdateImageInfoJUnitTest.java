@@ -12,9 +12,9 @@ import org.junit.Test;
  *
  * @author aladdin
  */
-public class JokeImageJUnitTest extends AbstractHappyTest {
+public class UpdateImageInfoJUnitTest extends AbstractHappyTest {
 
-    public JokeImageJUnitTest() {
+    public UpdateImageInfoJUnitTest() {
     }
 
     @Before
@@ -29,7 +29,7 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
     @Test
     public void test() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("pageSize", "10");
+        parameterMap.put("page", "5");
         Response response = this.testHandler.execute(ActionNames.UPDATE_IMAGE_INFO, parameterMap);
         System.out.println(response.getResponseMessage());
     }

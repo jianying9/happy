@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+html, body, div, input, textarea, img {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+body {
+    font: 14px Arial,Helvetica,sans-serif;
+    position: relative;
+}
