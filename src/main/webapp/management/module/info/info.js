@@ -7,6 +7,7 @@ define(function(require) {
     var self = {};
     var _event = _yy.getEvent();
     var _message = _yy.getMessage();
+    var _httpServer = _yy.getConfig('httpServer');
     self.init = function(thisModule) {
         var actionName = _yy.getSession('actionName');
         //
@@ -39,12 +40,12 @@ define(function(require) {
             if (msg.flag === 'SUCCESS') {
                 var data = msg.data;
                 var actionNameLabel = thisModule.findByKey('action-name-label');
-                actionNameLabel.setLabel(data.actionName);
+                actionNameLabel.setLabel(_httpServer + '?act=' + data.actionName);
                 var descriptionLabel = thisModule.findByKey('description-label');
                 descriptionLabel.setLabel(data.desc);
                 var otherInfo = '';
                 if(data.page === 'true') {
-                    otherInfo = otherInfo + '分页;';
+                    otherInfo = otherInfo + '分页请求:pageIndex,pageSize,响应:pageIndex,pageSize,pageNum,pageTotal;';
                 }
                 if(data.validateSession === 'true') {
                     otherInfo = otherInfo + 'session验证;';
