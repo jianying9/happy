@@ -63,9 +63,9 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warSourceExcludes>  
+<!--                    <warSourceExcludes>  
                         **/*.js,**/*.css
-                    </warSourceExcludes> 
+                    </warSourceExcludes>-->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
@@ -73,14 +73,14 @@
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
                 <version>1.4.0</version>
-                <executions>  
+<!--                <executions>  
                     <execution>  
                         <phase>process-resources</phase>  
                         <goals>  
                             <goal>compress</goal>  
                         </goals>  
                     </execution>  
-                </executions> 
+                </executions> -->
                 <configuration>
                     <!-- 读取js,css文件采用UTF-8编码 -->
                     <encoding>UTF-8</encoding>

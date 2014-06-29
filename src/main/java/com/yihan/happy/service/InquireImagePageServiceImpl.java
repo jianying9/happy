@@ -2,6 +2,7 @@ package com.yihan.happy.service;
 
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
+import com.wolf.framework.service.ResponseState;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
 import com.wolf.framework.service.parameter.ResponseConfig;
@@ -38,10 +39,13 @@ import java.util.List;
     @ResponseConfig(name = "mPicurl", typeEnum = TypeEnum.CHAR_255, desc = "中图片链接"),
     @ResponseConfig(name = "linkUrl", typeEnum = TypeEnum.CHAR_255, desc = "图片来源网页链接")
 },
+        responseStates = {
+    @ResponseState(state = "SUCCESS", desc = "查询成功")
+},
         validateSession = false,
         response = true,
         group = ActionGroupNames.IMAGE,
-        description = "分页查询图片，按照更新时间倒序排列.不返回总数和总页数")
+        desc = "分页查询图片，按照更新时间倒序排列.不返回总数和总页数")
 public class InquireImagePageServiceImpl implements Service {
 
     @InjectLocalService()

@@ -39,9 +39,9 @@ define(function(require) {
             }
         });
         _message.listen(groupList, 'WOLF_INQUIRE_GROUP', function(thisCom, msg) {
-            if (msg.flag === 'SUCCESS') {
+            if (msg.state === 'SUCCESS') {
                 var data = msg.data;
-                thisCom.loadData(data);
+                thisCom.loadData(data.list);
             }
         });
         //
@@ -61,10 +61,10 @@ define(function(require) {
             }
         });
         _message.listen(serviceList, 'WOLF_INQUIRE_SERVICE', function(thisCom, msg) {
-            if (msg.flag === 'SUCCESS') {
+            if (msg.state === 'SUCCESS') {
                 var data = msg.data;
                 thisCom.clear();
-                thisCom.loadData(data);
+                thisCom.loadData(data.list);
                 thisCom.show();
             }
         });

@@ -2,6 +2,7 @@ package com.yihan.happy.service;
 
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
+import com.wolf.framework.service.ResponseState;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
 import com.wolf.framework.service.parameter.RequestConfig;
@@ -23,10 +24,13 @@ import java.util.Map;
         requestConfigs = {
     @RequestConfig(name = "page", typeEnum = TypeEnum.LONG, desc = "抓取图片翻页次数,[1-50]")
 },
+        responseStates = {
+            @ResponseState(state = "SUCCESS", desc = "更新成功")
+        },
         validateSession = false,
         response = true,
         group = ActionGroupNames.IMAGE,
-        description = "抓取图片")
+        desc = "抓取图片")
 public class UpdateImageInfoServiceImpl implements Service {
 
     @InjectLocalService()

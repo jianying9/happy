@@ -24,6 +24,17 @@ define(function(require) {
             }
         });
         //
+        var responseStateList = thisModule.findByKey('response-state-list');
+        responseStateList.init({
+            key: 'state',
+            itemClazz: '',
+            itemDataToHtml: function(itemData) {
+                var result = '<div>' + itemData.state + '</div>'
+                        + '<div>' + itemData.desc + '</div>';
+                return result;
+            }
+        });
+        //
         var responseList = thisModule.findByKey('response-list');
         responseList.init({
             key: 'name',
@@ -37,17 +48,17 @@ define(function(require) {
         });
         //
         _message.listen(thisModule, 'WOLF_INQUIRE_SERVICE_INFO', function(thisCom, msg) {
-            if (msg.flag === 'SUCCESS') {
+            if (msg.state === 'SUCCESS') {
                 var data = msg.data;
                 var actionNameLabel = thisModule.findByKey('action-name-label');
                 actionNameLabel.setLabel(_httpServer + '?act=' + data.actionName);
                 var descriptionLabel = thisModule.findByKey('description-label');
                 descriptionLabel.setLabel(data.desc);
                 var otherInfo = '';
-                if(data.page === 'true') {
+                if (data.page === 'true') {
                     otherInfo = otherInfo + '分页请求:pageIndex,pageSize,响应:pageIndex,pageSize,pageNum,pageTotal;';
                 }
-                if(data.validateSession === 'true') {
+                if (data.validateSession === 'true') {
                     otherInfo = otherInfo + 'session验证;';
                 }
                 var otherLabel = thisModule.findByKey('other-label');
@@ -55,10 +66,18 @@ define(function(require) {
                 //
                 requestList.loadData(data.requestConfigs);
                 //
+                responseStateList.loadData(data.responseStates);
+                //
                 responseList.loadData(data.responseConfigs);
                 //动态渲染测试表单
                 var testRequestForm = thisModule.findByKey('test-request-form');
                 var inputHtml = '';
+                if (data.page) {
+                    inputHtml += '<div class="form_label">pageIndex:</div>'
+                            + '<input name="pageIndex" value="1" />'
+                            + '<div class="form_label">pageSize:</div>'
+                            + '<input name="pageSize" value="6" />';
+                }
                 for (var index = 0; index < data.requestConfigs.length; index++) {
                     inputHtml += '<div class="form_label">' + data.requestConfigs[index].name + ':</div>'
                             + '<input name="' + data.requestConfigs[index].name + '" value="" />';
@@ -81,38 +100,33 @@ define(function(require) {
                             for (var index = 0; index < indent - 1; index++) {
                                 thisTab += '  ';
                             }
-                            result += '{\n';
-                            for (var id in json) {
-                                result += childTab + '\"' + id + '\":' + _parse(json[id], indent + 1) + ',\n';
+                            //判断是否是数组
+                            if (Object.prototype.toString.call(json) === '[object Array]') {
+                                if (json.length === 0) {
+                                    result += '[]';
+                                } else {
+                                    result += '[';
+                                    result += _parse(json[0], indent + 1) + ',\n';
+                                    for (var index = 1; index < json.length; index++) {
+                                        result += childTab +  _parse(json[index], indent + 1) + ',\n';
+                                    }
+                                    result = result.substr(0, result.length - 2);
+                                    result += ']';
+                                }
+                            } else {
+                                result += '{\n';
+                                for (var id in json) {
+                                    result += childTab + '\"' + id + '\":' + _parse(json[id], indent + 1) + ',\n';
+                                }
+                                result = result.substr(0, result.length - 2);
+                                result += '\n' + thisTab + '}';
                             }
-                            result = result.substr(0, result.length - 2);
-                            result += '\n' + thisTab + '}';
                             break;
                         case 'number':
                             result = json;
                             break;
                         case 'string':
                             result = '\"' + json + '\"';
-                            break;
-                        case 'array':
-                            result += '[\n';
-                            var type;
-                            for (var index = 0; index < json.length; index++) {
-                                type = typeof json[index];
-                                switch (type) {
-                                    case 'object':
-                                        result += tab + _parse(json[index], indent + 1) + ',\n';
-                                        break;
-                                    case 'number':
-                                        result += json[index] + ',\n';
-                                        break;
-                                    case 'string':
-                                        result += '\"' + json[index] + '\",\n';
-                                        break;
-                                }
-                            }
-                            result = result.substr(0, result.length - 2);
-                            result += ']\n';
                             break;
                     }
                     return result;
