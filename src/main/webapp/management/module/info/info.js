@@ -1,4 +1,4 @@
-define(function(require) {
+define('info/info', ['require', 'yy', 'yy/label', 'yy/form', 'yy/button', 'yy/list'], function(require) {
     var _yy = require('yy');
     require('yy/label');
     require('yy/form');

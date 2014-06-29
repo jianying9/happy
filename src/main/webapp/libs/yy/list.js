@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/list', ['require', './yy', './list_item'], function(require) {
     var yy = require('./yy');
     require('./list_item');
     var _index = yy.getIndex();

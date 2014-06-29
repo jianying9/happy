@@ -1,4 +1,4 @@
-define(function(require) {
+define('home/home', ['require', 'yy', 'yy/form', 'yy/button', 'yy/list', 'crypto.md5', 'yy/module'], function(require) {
     var _yy = require('yy');
     require('yy/form');
     require('yy/button');

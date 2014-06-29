@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/label', ['require', './yy'], function(require) {
     require('./yy');
     var self = {};
     self.parameters = [];

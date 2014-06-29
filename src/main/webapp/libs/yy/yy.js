@@ -2,7 +2,7 @@
  * yy核心库
  */
 
-define(function(require) {
+define('yy/yy', ['require', 'jquery', 'jquery.mousewheel', './config'], function(require) {
 //require用于依赖加载
 //localRequire用于动态加载
     require('jquery');

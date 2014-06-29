@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/form', ['require', './yy'], function(require) {
     var yy = require('./yy');
     var _utils = yy.getUtils();
     var self = {};

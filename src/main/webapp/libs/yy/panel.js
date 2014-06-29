@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/panel', ['require', './yy'], function(require) {
     var yy = require('./yy');
     var _index = yy.getIndex();
     var _utils = yy.getUtils();

@@ -1,5 +1,4 @@
-
-define(function() {
+define('yy/config' ,['require'], function(require) {
     var self = {};
     //模块解析顺序
     model = {};

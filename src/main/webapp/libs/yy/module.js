@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/module', ['require', './yy'], function(require) {
     var yy = require('./yy');
     var self = {};
     self.parameters = [];

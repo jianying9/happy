@@ -1,4 +1,4 @@
-define(function(require) {
+define('yy/button', ['require', './yy'], function(require) {
     require('./yy');
     var self = {};
     self.parameters = [];
