@@ -29,6 +29,7 @@ public class InquireImagePageJUnitTest extends AbstractHappyTest {
     @Test
     public void test() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("pageSize", "2");
         Response response = this.testHandler.execute(ActionNames.INQUIRE_IMAGE_PAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }

@@ -29,7 +29,7 @@ public class UpdateImageInfoJUnitTest extends AbstractHappyTest {
     @Test
     public void test() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("page", "5");
+        parameterMap.put("page", "2");
         Response response = this.testHandler.execute(ActionNames.UPDATE_IMAGE_INFO, parameterMap);
         System.out.println(response.getResponseMessage());
     }
