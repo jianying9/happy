@@ -1,9 +1,5 @@
-define('info/info', ['require', 'yy', 'yy/label', 'yy/form', 'yy/button', 'yy/list'], function(require) {
-    var _yy = require('yy');
-    require('yy/label');
-    require('yy/form');
-    require('yy/button');
-    require('yy/list');
+define('info/info', ['require', 'yy/yy', 'yy/label', 'yy/form', 'yy/button', 'yy/list'], function(require) {
+    var _yy = require('yy/yy');
     var self = {};
     var _event = _yy.getEvent();
     var _message = _yy.getMessage();
