@@ -14,11 +14,15 @@ public interface JokeImageLocalService extends Local {
 
     public List<ImageInfo> getPage(long pageIndex);
     
-    public boolean existImage(long id);
+    public boolean existImage(String id);
     
     public void insertImage(Map<String, String> entityMap);
     
-    public void deleteImage(long id);
+    public void deleteImage(String id);
+    
+    public long voteUpImage(String id);
+    
+    public long voteDownImage(String id);
     
     public List<JokeImageEntity> inquireJokeImageEntityListDESC(long pageIndex, long pageSize);
     

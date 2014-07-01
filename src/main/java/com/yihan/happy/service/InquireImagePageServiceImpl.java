@@ -24,7 +24,7 @@ import java.util.List;
     @ResponseConfig(name = "id", typeEnum = TypeEnum.CHAR_32, desc = "图片id"),
     @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
     @ResponseConfig(name = "tag", typeEnum = TypeEnum.CHAR_120, desc = "标签"),
-    @ResponseConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "顶的次数"),
+    @ResponseConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @ResponseConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
     @ResponseConfig(name = "createTime", typeEnum = TypeEnum.DATE_TIME, desc = "更新时间"),
     @ResponseConfig(name = "url", typeEnum = TypeEnum.CHAR_255, desc = "本地原始图片url,还没有下载本地时为空"),

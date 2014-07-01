@@ -18,7 +18,7 @@ import java.util.Map;
 public final class JokeImageEntity extends Entity {
 
     @RColumnConfig(columnTypeEnum = ColumnTypeEnum.KEY, desc = "主键id")
-    private long id;
+    private String id;
     //
     @RColumnConfig(desc = "标题")
     private String title;
@@ -29,7 +29,7 @@ public final class JokeImageEntity extends Entity {
     @RColumnConfig(desc = "标签")
     private String tag;
     //
-    @RColumnConfig(desc = "顶的次数")
+    @RColumnConfig(desc = "赞的次数")
     private long voteUp;
     //
     @RColumnConfig(desc = "踩的次数")
@@ -79,13 +79,13 @@ public final class JokeImageEntity extends Entity {
 
     @Override
     public String getKeyValue() {
-        return Long.toString(this.id);
+        return this.id;
     }
 
     @Override
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(32, 1);
-        map.put("id", Long.toString(this.id));
+        map.put("id", this.id);
         map.put("title", this.title);
         map.put("content", this.content);
         map.put("tag", this.tag);
@@ -110,7 +110,7 @@ public final class JokeImageEntity extends Entity {
 
     @Override
     protected void parseMap(Map<String, String> entityMap) {
-        this.id = Long.parseLong(entityMap.get("id"));
+        this.id = entityMap.get("id");
         this.title = entityMap.get("title");
         this.content = entityMap.get("content");
         this.tag = entityMap.get("tag");

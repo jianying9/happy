@@ -145,13 +145,13 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
                     if (fromName == null) {
                         fromName = "";
                     }
-                    if(jsonNode.get("comment_count") == null) {
+                    if (jsonNode.get("comment_count") == null) {
                         comment = 0;
                     } else {
                         comment = jsonNode.get("comment_count").getLongValue();
                     }
                     imageInfo = new ImageInfo();
-                    imageInfo.setId(Long.parseLong(id));
+                    imageInfo.setId(id);
                     imageInfo.setTitle(title);
                     imageInfo.setContent(content);
                     imageInfo.setTag(tag);
@@ -181,8 +181,8 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
     }
 
     @Override
-    public boolean existImage(long id) {
-        return this.jokeImageEntityDao.exist(Long.toString(id));
+    public boolean existImage(String id) {
+        return this.jokeImageEntityDao.exist(id);
     }
 
     @Override
@@ -193,8 +193,8 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
     }
 
     @Override
-    public void deleteImage(long id) {
-        this.jokeImageEntityDao.delete(Long.toString(id));
+    public void deleteImage(String id) {
+        this.jokeImageEntityDao.delete(id);
     }
 
     @Override
@@ -233,5 +233,15 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
         inquirePageContext.setPageSize(pageSize);
         inquirePageContext.setPageIndex(pageIndex);
         return this.jokeImageSourceEntityDao.inquire(inquirePageContext);
+    }
+
+    @Override
+    public long voteUpImage(String id) {
+        return this.jokeImageEntityDao.increase(id, "voteUp", 1);
+    }
+
+    @Override
+    public long voteDownImage(String id) {
+        return this.jokeImageEntityDao.increase(id, "voteDown", 1);
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public final class ImageInfo {
 
-    private long id;
+    private String id;
     //
     private String title;
     //
@@ -52,11 +52,11 @@ public final class ImageInfo {
     //
     private String linkUrl;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -222,7 +222,7 @@ public final class ImageInfo {
     
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(32, 1);
-        map.put("id", Long.toString(this.id));
+        map.put("id", this.id);
         map.put("title", this.title);
         map.put("content", this.content);
         map.put("tag", this.tag);
