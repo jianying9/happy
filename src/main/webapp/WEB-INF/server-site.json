@@ -38,5 +38,13 @@
     "websocket": {
         "value": "off",
         "describe": "开启websocket"
+    },
+    "seed.des.key": {
+        "value": "4102gnab",
+        "describe": "访问校验密钥,8位字符"
+    },
+    "seed.error": {
+        "value": "180000",
+        "describe": "校验时间最大误差毫秒"
     }
 }
