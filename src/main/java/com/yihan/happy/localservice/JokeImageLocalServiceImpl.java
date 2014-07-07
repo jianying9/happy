@@ -29,7 +29,7 @@ import org.codehaus.jackson.node.ArrayNode;
  */
 @LocalServiceConfig(
         interfaceInfo = JokeImageLocalService.class,
-        description = "redis table主键值管理")
+        description = "图片相关接口")
 public class JokeImageLocalServiceImpl implements JokeImageLocalService {
 
     @InjectRDao(clazz = JokeImageEntity.class)
