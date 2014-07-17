@@ -16,5 +16,6 @@ public class ActionNames {
     //图片点踩
     public final static String VOTE_DOWN_IMAGE = "VOTE_DOWN_IMAGE";
     //------------------------用户---------------------------//
+    //sina用户登录
     public final static String SINA_USER_LOGIN = "SINA_USER_LOGIN";
 }

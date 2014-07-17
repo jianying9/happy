@@ -10,9 +10,10 @@ public class TableNames {
     public final static String Y_KEY = "Y_KEY";
     //幽默图片
     public final static String Y_JOKE_IMAGE = "Y_JOKE_IMAGE";
-    //幽默图片
+    //幽默图片来源
     public final static String Y_JOKE_IMAGE_SOURCE = "Y_JOKE_IMAGE_SOURCE";
-    //幽默图片
+    //用户
     public final static String Y_USER = "Y_USER";
-    
+    //微博用户-用户映射
+    public final static String Y_SINA_USER_MAP = "Y_SINA_USER_MAP";
 }

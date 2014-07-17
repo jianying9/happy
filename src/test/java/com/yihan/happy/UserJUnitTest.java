@@ -30,8 +30,7 @@ public class UserJUnitTest extends AbstractHappyTest {
     @Test
     public void testSinaLogin() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("name", "1231");
-        parameterMap.put("password", SecurityUtils.encryptByMd5("000000"));
+        parameterMap.put("sinaId", "261455");
         Response response = this.testHandler.execute(ActionNames.SINA_USER_LOGIN, parameterMap);
         System.out.println(response.getResponseMessage());
     }
