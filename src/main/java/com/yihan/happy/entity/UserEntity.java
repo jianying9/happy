@@ -14,7 +14,8 @@ import java.util.Map;
  * @author jianying9
  */
 @RDaoConfig(
-        tableName = TableNames.Y_USER)
+        tableName = TableNames.Y_USER,
+        sortedSets = {"favoriteImages"})
 public final class UserEntity extends Entity {
 
     @RColumnConfig(columnTypeEnum = ColumnTypeEnum.KEY, desc = "用户id")
@@ -35,7 +36,7 @@ public final class UserEntity extends Entity {
     public String getSinaId() {
         return sinaId;
     }
-    
+
     @Override
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(2, 1);

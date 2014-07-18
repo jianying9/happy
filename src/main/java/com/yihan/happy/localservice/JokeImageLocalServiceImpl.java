@@ -204,6 +204,11 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
         inquirePageContext.setPageIndex(pageIndex);
         return this.jokeImageEntityDao.inquireDESC(inquirePageContext);
     }
+    
+    @Override
+    public List<JokeImageEntity> inquireJokeImageEntityListByIdList(List<String> imageIdList) {
+        return this.jokeImageEntityDao.inquireByKeys(imageIdList);
+    }
 
     @Override
     public boolean existImageSource(String url) {

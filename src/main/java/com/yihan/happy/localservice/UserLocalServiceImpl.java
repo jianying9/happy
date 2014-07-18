@@ -8,6 +8,7 @@ import com.yihan.happy.config.TableNames;
 import com.yihan.happy.entity.SinaUserMapEntity;
 import com.yihan.happy.entity.UserEntity;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,5 +55,15 @@ public class UserLocalServiceImpl implements UserLocalService {
             }
         }
         return id;
+    }
+
+    @Override
+    public void addFavoriteImage(String id, String imageId) {
+        this.userEntityDao.sortedSetAdd(id, "favoriteImages", imageId, System.currentTimeMillis());
+    }
+
+    @Override
+    public List<String> inquireFavorite(String id) {
+        return this.userEntityDao.sortedSetDESC(id, "favoriteImages");
     }
 }

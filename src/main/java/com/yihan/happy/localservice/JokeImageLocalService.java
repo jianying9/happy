@@ -26,6 +26,8 @@ public interface JokeImageLocalService extends Local {
     
     public List<JokeImageEntity> inquireJokeImageEntityListDESC(long pageIndex, long pageSize);
     
+    public List<JokeImageEntity> inquireJokeImageEntityListByIdList(List<String> imageIdList);
+    
     public boolean existImageSource(String url);
     
     public void insertImageSource(String url, String name);
