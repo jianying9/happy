@@ -61,6 +61,11 @@ public class UserLocalServiceImpl implements UserLocalService {
     public void addFavoriteImage(String id, String imageId) {
         this.userEntityDao.sortedSetAdd(id, "favoriteImages", imageId, System.currentTimeMillis());
     }
+    
+    @Override
+    public void deleteFavoriteImage(String id, String imageId) {
+        this.userEntityDao.sortedSetRemove(id, "favoriteImages", imageId);
+    }
 
     @Override
     public List<String> inquireFavorite(String id) {

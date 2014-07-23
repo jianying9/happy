@@ -13,5 +13,7 @@ public interface UserLocalService extends Local {
     
     public void addFavoriteImage(String id, String imageId);
     
+    public void deleteFavoriteImage(String id, String imageId);
+    
     public List<String> inquireFavorite(String id);
 }

@@ -20,6 +20,8 @@ public class ActionNames {
     public final static String SINA_USER_LOGIN = "SINA_USER_LOGIN";
     //收藏图片
     public final static String ADD_FAVORITE_IMAGE = "ADD_FAVORITE_IMAGE";
+    //收藏图片
+    public final static String DELETE_FAVORITE_IMAGE = "DELETE_FAVORITE_IMAGE";
     //查看我的收藏图片
     public final static String INQUIRE_FAVORITE_IMAGE = "INQUIRE_FAVORITE_IMAGE";
 }
