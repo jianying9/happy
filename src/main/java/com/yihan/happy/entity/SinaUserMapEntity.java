@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * 存放sina用户id与bigcodeban用户id的映射
  *
  * @author jianying9
  */

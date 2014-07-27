@@ -34,15 +34,16 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-//    @Test
+    @Test
     public void testUpdateImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("page", "2");
+        parameterMap.put("password", "bigcodebang");
         Response response = this.testHandler.execute(ActionNames.UPDATE_IMAGE_INFO, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testVoteUpImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("id", "170793");
@@ -50,7 +51,7 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testVoteDownImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("id", "170793");

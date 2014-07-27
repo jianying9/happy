@@ -9,20 +9,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * bigcodebang用户的信息
+ * 存放多盟积分的变化历史记录
  *
  * @author jianying9
  */
 @RDaoConfig(
-        tableName = TableNames.Y_USER,
-        sortedSets = {"favoriteImages"})
-public final class UserEntity extends Entity {
+        tableName = TableNames.Y_DUOMEN_POINT_HISTORY)
+public final class DuomenPointHistoryEntity extends Entity {
 
-    @RColumnConfig(columnTypeEnum = ColumnTypeEnum.KEY, desc = "用户id")
-    private String id;
-    //
-    @RColumnConfig(desc = "sina用户id")
-    private String sinaId;
+    @RColumnConfig(columnTypeEnum = ColumnTypeEnum.KEY, desc = "yyyy-mm-dd + '_' + 用户id")
+    private String dateId;
     //
     @RColumnConfig(desc = "duomen的android的积分", defaultValue = "0")
     private long duomenAndroidPoint;
@@ -32,15 +28,11 @@ public final class UserEntity extends Entity {
     //
     @Override
     public String getKeyValue() {
-        return this.id;
+        return this.dateId;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getSinaId() {
-        return sinaId;
+    public String getDateId() {
+        return dateId;
     }
 
     public long getDuomenAndroidPoint() {
@@ -50,12 +42,11 @@ public final class UserEntity extends Entity {
     public long getDuomenIosPoint() {
         return duomenIosPoint;
     }
-    
+
     @Override
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(4, 1);
-        map.put("id", this.id);
-        map.put("sinaId", this.sinaId);
+        map.put("dateId", this.dateId);
         map.put("duomenAndroidPoint", Long.toString(this.duomenAndroidPoint));
         map.put("duomenIosPoint", Long.toString(this.duomenIosPoint));
         return map;
@@ -63,8 +54,7 @@ public final class UserEntity extends Entity {
 
     @Override
     protected void parseMap(Map<String, String> entityMap) {
-        this.id = entityMap.get("id");
-        this.sinaId = entityMap.get("sinaId");
+        this.dateId = entityMap.get("dateId");
         this.duomenAndroidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
         this.duomenIosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
     }

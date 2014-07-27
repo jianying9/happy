@@ -25,11 +25,12 @@ import java.util.Map;
 @ServiceConfig(
         actionName = ActionNames.UPDATE_IMAGE_INFO,
         requestConfigs = {
-    @RequestConfig(name = "page", typeEnum = TypeEnum.LONG, desc = "抓取图片翻页次数,[1-50]")
-},
+            @RequestConfig(name = "page", typeEnum = TypeEnum.LONG, desc = "抓取图片翻页次数,[1-50]"),
+            @RequestConfig(name = "password", typeEnum = TypeEnum.CHAR_32, desc = "密码")
+        },
         responseStates = {
-    @ResponseState(state = "SUCCESS", desc = "更新成功")
-},
+            @ResponseState(state = "SUCCESS", desc = "更新成功")
+        },
         validateSession = false,
         response = true,
         group = ActionGroupNames.IMAGE,
@@ -44,14 +45,17 @@ public class UpdateImageInfoServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-        long page = Long.parseLong(messageContext.getParameter("page"));
-        if (page <= 0) {
-            page = 1;
-        } else if (page > 50) {
-            page = 50;
+        String password = messageContext.getParameter("password");
+        if (password.equals("bigcodebang")) {
+            long page = Long.parseLong(messageContext.getParameter("page"));
+            if (page <= 0) {
+                page = 1;
+            } else if (page > 50) {
+                page = 50;
+            }
+            Task updateImageTask = new updateImageTaskImpl(page);
+            this.taskExecutor.submit(updateImageTask);
         }
-        Task updateImageTask = new updateImageTaskImpl(page);
-        this.taskExecutor.submit(updateImageTask);
         messageContext.success();
     }
 

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * 存放主键管理信息
  *
  * @author jianying9
  */

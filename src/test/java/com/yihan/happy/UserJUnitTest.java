@@ -56,4 +56,28 @@ public class UserJUnitTest extends AbstractHappyTest {
         Response response = this.testHandler.execute(ActionNames.INQUIRE_FAVORITE_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
+    
+    @Test
+    public void testUpdateDuomenAndroidPoint() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("duomenAndroidPoint", "600000");
+        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_ANDORID_POINT, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+    @Test
+    public void testUpdateDuomenIosPoint() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("duomenIosPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_IOS_POINT, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+    @Test
+    public void testUpdateDuomenPointHistory() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("password", "bigcodebang");
+        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_POINT_HISTORY, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
 }

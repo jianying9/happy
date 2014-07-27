@@ -18,6 +18,12 @@ public class ActionNames {
     //------------------------用户---------------------------//
     //sina用户登录
     public final static String SINA_USER_LOGIN = "SINA_USER_LOGIN";
+    //保存当前用户的多盟的android积分
+    public final static String UPDATE_DUOMEN_ANDORID_POINT = "UPDATE_DUOMEN_ANDORID_POINT";
+    //保存当前用户的多盟的ios积分
+    public final static String UPDATE_DUOMEN_IOS_POINT = "UPDATE_DUOMEN_IOS_POINT";
+    //定时记录用户的当天的积分情况
+    public final static String UPDATE_DUOMEN_POINT_HISTORY = "UPDATE_DUOMEN_POINT_HISTORY";
     //收藏图片
     public final static String ADD_FAVORITE_IMAGE = "ADD_FAVORITE_IMAGE";
     //收藏图片

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * 存放图片信息
  *
  * @author aladdin
  */
