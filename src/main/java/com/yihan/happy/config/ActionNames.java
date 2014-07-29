@@ -24,6 +24,18 @@ public class ActionNames {
     public final static String UPDATE_DUOMEN_IOS_POINT = "UPDATE_DUOMEN_IOS_POINT";
     //定时记录用户的当天的积分情况
     public final static String UPDATE_DUOMEN_POINT_HISTORY = "UPDATE_DUOMEN_POINT_HISTORY";
+    //android积分提现
+    public final static String ORDER_FOR_MONEY_FROM_ANDROID= "ORDER_FOR_MONEY_FROM_ANDROID";
+    //ios积分提现
+    public final static String ORDER_FOR_MONEY_FROM_IOS= "ORDER_FOR_MONEY_FROM_IOS";
+    //android积分充值话费
+    public final static String ORDER_FOR_PHONE_BILL_FROM_ANDROID= "ORDER_FOR_PHONE_BILL_FROM_ANDROID";
+    //IOS积分充值话费
+    public final static String ORDER_FOR_PHONE_BILL_FROM_IOS= "ORDER_FOR_PHONE_BILL_FROM_IOS";
+    //完成订单
+    public final static String FINISH_ORDER = "FINISH_ORDER";
+    //订单信息错误，提示客户修改补充相关信息
+    public final static String INVALID_ORDER = "INVALID_ORDER";
     //收藏图片
     public final static String ADD_FAVORITE_IMAGE = "ADD_FAVORITE_IMAGE";
     //收藏图片

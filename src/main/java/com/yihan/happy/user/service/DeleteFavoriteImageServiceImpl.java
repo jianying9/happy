@@ -1,4 +1,4 @@
-package com.yihan.happy.service;
+package com.yihan.happy.user.service;
 
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
@@ -10,14 +10,14 @@ import com.wolf.framework.service.parameter.ResponseConfig;
 import com.wolf.framework.worker.context.MessageContext;
 import com.yihan.happy.config.ActionGroupNames;
 import com.yihan.happy.config.ActionNames;
-import com.yihan.happy.localservice.UserLocalService;
+import com.yihan.happy.user.localservice.UserLocalService;
 
 /**
  *
  * @author jianying9
  */
 @ServiceConfig(
-        actionName = ActionNames.ADD_FAVORITE_IMAGE,
+        actionName = ActionNames.DELETE_FAVORITE_IMAGE,
         requestConfigs = {
     @RequestConfig(name = "imageId", typeEnum = TypeEnum.CHAR_32, desc = "图片id")
 },
@@ -25,13 +25,13 @@ import com.yihan.happy.localservice.UserLocalService;
     @ResponseConfig(name = "imageId", typeEnum = TypeEnum.CHAR_32, desc = "图片id")
 },
         responseStates = {
-    @ResponseState(state = "SUCCESS", desc = "收藏成功")
+    @ResponseState(state = "SUCCESS", desc = "删除成功")
 },
         validateSession = true,
         response = true,
         group = ActionGroupNames.USER,
-        desc = "收藏图片")
-public class AddFavoriteImageServiceImpl implements Service {
+        desc = "删除收藏图片")
+public class DeleteFavoriteImageServiceImpl implements Service {
 
     //
     @InjectLocalService()
@@ -41,7 +41,7 @@ public class AddFavoriteImageServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         String imageId = messageContext.getParameter("imageId");
         String id = messageContext.getSession().getSid();
-        this.userLocalService.addFavoriteImage(id, imageId);
+        this.userLocalService.deleteFavoriteImage(id, imageId);
         messageContext.setMapData(messageContext.getParameterMap());
         messageContext.success();
     }

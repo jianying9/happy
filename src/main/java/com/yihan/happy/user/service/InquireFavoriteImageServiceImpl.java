@@ -1,4 +1,4 @@
-package com.yihan.happy.service;
+package com.yihan.happy.user.service;
 
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
@@ -11,7 +11,7 @@ import com.yihan.happy.config.ActionGroupNames;
 import com.yihan.happy.config.ActionNames;
 import com.yihan.happy.entity.JokeImageEntity;
 import com.yihan.happy.localservice.JokeImageLocalService;
-import com.yihan.happy.localservice.UserLocalService;
+import com.yihan.happy.user.localservice.UserLocalService;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.yihan.happy.localservice;
+package com.yihan.happy.user.localservice;
 
 import com.wolf.framework.local.Local;
-import com.yihan.happy.entity.DuomenPointHistoryEntity;
-import com.yihan.happy.entity.UserEntity;
+import com.yihan.happy.user.entity.DuomenPointHistoryEntity;
+import com.yihan.happy.user.entity.UserEntity;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +12,17 @@ import java.util.Map;
  */
 public interface UserLocalService extends Local {
     
-    public String ANDROID_TYPE = "1";
-    public String IOS_TYPE = "2";
-
+    //订单类型
+    public String MONEY_ORDER_TYPE = "1";
+    
+    public String PHONE_BILL_ORDER_TYPE = "2";
+    //订单状态
+    public String UN_FINISH_ORDER_STATE = "0";
+    
+    public String FINISH_ORDER_STATE = "1";
+    
+    public String INVALID_ORDER_STATE = "-1";
+    
     /**
      * 使用sinaId登陆
      * @param sinaId
@@ -98,4 +106,53 @@ public interface UserLocalService extends Local {
      * @param historyEntityMap 
      */
     public void insertDuomenPointHistory(Map<String, String> historyEntityMap);
+    
+    /**
+     * 新增android提现订单
+     * @param userId
+     * @param zfb
+     * @param duomenAndroidPoint 
+     */
+    public String insertMoneyOrderFromAndroid(String userId, String zfb, String duomenAndroidPoint);
+    
+    /**
+     * 新增ios提现订单
+     * @param userId
+     * @param zfb
+     * @param duomenIosPoint
+     * @return 
+     */
+    public String insertMoneyOrderFromIos(String userId, String zfb, String duomenIosPoint);
+    
+    /**
+     * 新增android充话费订单
+     * @param userId
+     * @param cellPhone
+     * @param duomenAndroidPoint
+     * @return 
+     */
+    public String insertPhoneBillOrderFromAndroid(String userId, String cellPhone, String duomenAndroidPoint);
+    
+    /**
+     * 新增ios充话费订单
+     * @param userId
+     * @param cellPhone
+     * @param duomenIosPoint
+     * @return 
+     */
+    public String insertPhoneBillOrderFromIos(String userId, String cellPhone, String duomenIosPoint);
+    
+    /**
+     * 完成订单
+     * @param orderId
+     * @param note 
+     */
+    public void finishOrder(String orderId, String note);
+    
+    /**
+     * 无效的订单
+     * @param orderId
+     * @param note
+     */
+    public void invalidOrder(String orderId, String note);
 }

@@ -26,7 +26,7 @@ public class UserJUnitTest extends AbstractHappyTest {
     }
     //
 
-    @Test
+//    @Test
     public void testSinaLogin() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("sinaId", "261455");
@@ -34,7 +34,7 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testAddFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("imageId", "261455");
@@ -42,7 +42,7 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testDeleteFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("imageId", "261455");
@@ -50,14 +50,14 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testInquireFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         Response response = this.testHandler.execute(ActionNames.INQUIRE_FAVORITE_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testUpdateDuomenAndroidPoint() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("duomenAndroidPoint", "600000");
@@ -65,7 +65,7 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testUpdateDuomenIosPoint() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("duomenIosPoint", "100");
@@ -73,11 +73,56 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testUpdateDuomenPointHistory() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("password", "bigcodebang");
         Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_POINT_HISTORY, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+//    @Test
+    public void testOrderForMoneyFormAndroid() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("zfb", "bigcodebang@163.com");
+        parameterMap.put("duomenAndroidPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.ORDER_FOR_MONEY_FROM_ANDROID, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+//    @Test
+    public void testOrderForMoneyFormIos() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("zfb", "bigcodebang@163.com");
+        parameterMap.put("duomenIosPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.ORDER_FOR_MONEY_FROM_IOS, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+//    @Test
+    public void testOrderForPhoneBillFormAndroid() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("cellPhone", "13459118551");
+        parameterMap.put("duomenAndroidPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.ORDER_FOR_PHONE_BILL_FROM_ANDROID, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+//    @Test
+    public void testOrderForPhoneBillFormIos() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("cellPhone", "13459118551");
+        parameterMap.put("duomenIosPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.ORDER_FOR_PHONE_BILL_FROM_IOS, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+    @Test
+    public void testFinishOrder() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("orderId", "100001");
+        parameterMap.put("note", "兑换100");
+        Response response = this.testHandler.execute(ActionNames.FINISH_ORDER, parameterMap);
         System.out.println(response.getResponseMessage());
     }
 }

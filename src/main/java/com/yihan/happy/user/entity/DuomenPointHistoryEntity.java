@@ -1,4 +1,4 @@
-package com.yihan.happy.entity;
+package com.yihan.happy.user.entity;
 
 import com.wolf.framework.dao.Entity;
 import com.wolf.framework.dao.annotation.ColumnTypeEnum;

@@ -18,4 +18,6 @@ public class TableNames {
     public final static String Y_DUOMEN_POINT_HISTORY = "Y_DUOMEN_POINT_HISTORY";
     //微博用户-用户映射
     public final static String Y_SINA_USER_MAP = "Y_SINA_USER_MAP";
+    //订单
+    public final static String Y_ORDER = "Y_ORDER";
 }

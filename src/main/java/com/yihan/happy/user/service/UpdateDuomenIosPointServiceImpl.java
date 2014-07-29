@@ -1,4 +1,4 @@
-package com.yihan.happy.service;
+package com.yihan.happy.user.service;
 
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
@@ -9,7 +9,7 @@ import com.wolf.framework.service.parameter.RequestConfig;
 import com.wolf.framework.worker.context.MessageContext;
 import com.yihan.happy.config.ActionGroupNames;
 import com.yihan.happy.config.ActionNames;
-import com.yihan.happy.localservice.UserLocalService;
+import com.yihan.happy.user.localservice.UserLocalService;
 
 /**
  *

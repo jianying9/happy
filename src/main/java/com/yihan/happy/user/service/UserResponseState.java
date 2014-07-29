@@ -1,4 +1,4 @@
-package com.yihan.happy.service;
+package com.yihan.happy.user.service;
 
 /**
  *
