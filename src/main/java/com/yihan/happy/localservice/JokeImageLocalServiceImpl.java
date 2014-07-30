@@ -3,7 +3,9 @@ package com.yihan.happy.localservice;
 import com.wolf.framework.dao.REntityDao;
 import com.wolf.framework.dao.annotation.InjectRDao;
 import com.wolf.framework.dao.condition.InquirePageContext;
+import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.local.LocalServiceConfig;
+import com.yihan.happy.config.TableNames;
 import com.yihan.happy.entity.JokeImageEntity;
 import com.yihan.happy.entity.JokeImageSourceEntity;
 import com.yihan.happy.spider.HttpClientManager;
@@ -40,6 +42,10 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
     //
     private volatile HttpClientManager httpClientManager;
     private final String imageUrl = "http://www.hao123.com/gaoxiao/screen/all/";
+    
+    //
+    @InjectLocalService()
+    private KeyLocalService keyLocalService;
 
     @Override
     public void init() {
@@ -53,6 +59,12 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
             hcm.add(httpClient);
         }
         this.httpClientManager = hcm;
+        //
+        //初始化Y_USER主键
+        long maxKeyValue = this.keyLocalService.getMaxKeyValue(TableNames.Y_JOKE_IMAGE);
+        if (maxKeyValue < 300000) {
+            this.keyLocalService.updateMaxKeyValue(TableNames.Y_JOKE_IMAGE, 300000);
+        }
     }
 
     private String getUrl(String url) {
@@ -186,10 +198,17 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
     }
 
     @Override
-    public void insertImage(Map<String, String> entityMap) {
-        long source = Long.parseLong(entityMap.get("createTime"));
+    public String insertImage(Map<String, String> entityMap) {
+        String id = entityMap.get("id");
+        if(id == null) {
+            long newId = this.keyLocalService.nextKeyValue(TableNames.Y_JOKE_IMAGE);
+            id = Long.toString(newId);
+            entityMap.put("id", id);
+        }
+        long source = System.currentTimeMillis();
         this.jokeImageEntityDao.setKeySorce(entityMap, source);
         this.jokeImageEntityDao.insert(entityMap);
+        return id;
     }
 
     @Override

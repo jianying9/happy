@@ -95,24 +95,12 @@ public class UpdateImageInfoServiceImpl implements Service {
                             entityMap.clear();
                             entityMap.put("id", imageInfo.getId());
                             entityMap.put("title", imageInfo.getTitle());
-                            entityMap.put("content", imageInfo.getContent());
-                            entityMap.put("tag", imageInfo.getTag());
                             entityMap.put("voteUp", Long.toString(imageInfo.getVoteUp()));
                             entityMap.put("voteDown", Long.toString(imageInfo.getVoteDown()));
-                            entityMap.put("share", Long.toString(imageInfo.getShare()));
-                            entityMap.put("comment", Long.toString(imageInfo.getComment()));
-                            entityMap.put("createTime", Long.toString(imageInfo.getCreateTime()));
                             entityMap.put("url", "");
                             entityMap.put("height", Long.toString(imageInfo.getHeight()));
                             entityMap.put("width", Long.toString(imageInfo.getWidth()));
                             entityMap.put("picurl", imageInfo.getPicurl());
-                            entityMap.put("sHeight", Long.toString(imageInfo.getsHeight()));
-                            entityMap.put("sWidth", Long.toString(imageInfo.getsWidth()));
-                            entityMap.put("sPicurl", imageInfo.getsPicurl());
-                            entityMap.put("mHeight", Long.toString(imageInfo.getmHeight()));
-                            entityMap.put("mWidth", Long.toString(imageInfo.getmWidth()));
-                            entityMap.put("mPicurl", imageInfo.getmPicurl());
-                            entityMap.put("linkUrl", imageInfo.getLinkUrl());
                             jokeImageLocalService.insertImage(entityMap);
                         }
                     }

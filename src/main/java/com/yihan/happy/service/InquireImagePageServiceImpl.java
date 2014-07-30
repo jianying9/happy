@@ -23,21 +23,12 @@ import java.util.List;
         responseConfigs = {
     @ResponseConfig(name = "id", typeEnum = TypeEnum.CHAR_32, desc = "图片id"),
     @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
-    @ResponseConfig(name = "tag", typeEnum = TypeEnum.CHAR_120, desc = "标签"),
     @ResponseConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @ResponseConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
-    @ResponseConfig(name = "createTime", typeEnum = TypeEnum.DATE_TIME, desc = "更新时间"),
     @ResponseConfig(name = "url", typeEnum = TypeEnum.CHAR_255, desc = "本地原始图片url,还没有下载本地时为空"),
-    @ResponseConfig(name = "height", typeEnum = TypeEnum.LONG, desc = "大图片高"),
-    @ResponseConfig(name = "width", typeEnum = TypeEnum.LONG, desc = "大图片宽"),
-    @ResponseConfig(name = "picurl", typeEnum = TypeEnum.CHAR_255, desc = "大图片链接"),
-    @ResponseConfig(name = "sHeight", typeEnum = TypeEnum.LONG, desc = "小图片高"),
-    @ResponseConfig(name = "sWidth", typeEnum = TypeEnum.LONG, desc = "小图片宽"),
-    @ResponseConfig(name = "sPicurl", typeEnum = TypeEnum.CHAR_255, desc = "小图片链接"),
-    @ResponseConfig(name = "mHeight", typeEnum = TypeEnum.LONG, desc = "中始图片高"),
-    @ResponseConfig(name = "mWidth", typeEnum = TypeEnum.LONG, desc = "中始图片宽"),
-    @ResponseConfig(name = "mPicurl", typeEnum = TypeEnum.CHAR_255, desc = "中图片链接"),
-    @ResponseConfig(name = "linkUrl", typeEnum = TypeEnum.CHAR_255, desc = "图片来源网页链接")
+    @ResponseConfig(name = "height", typeEnum = TypeEnum.LONG, desc = "图片高"),
+    @ResponseConfig(name = "width", typeEnum = TypeEnum.LONG, desc = "图片宽"),
+    @ResponseConfig(name = "picurl", typeEnum = TypeEnum.CHAR_255, desc = "图片链接")
 },
         responseStates = {
     @ResponseState(state = "SUCCESS", desc = "查询成功")

@@ -16,7 +16,7 @@ public interface JokeImageLocalService extends Local {
     
     public boolean existImage(String id);
     
-    public void insertImage(Map<String, String> entityMap);
+    public String insertImage(Map<String, String> entityMap);
     
     public void deleteImage(String id);
     

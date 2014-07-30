@@ -9,6 +9,8 @@ public class ActionNames {
     //-----------------------图片爬虫------------------------//
     //抓取图片
     public final static String UPDATE_IMAGE_INFO = "UPDATE_IMAGE_INFO";
+    //新增图片
+    public final static String INSERT_IMAGE = "INSERT_IMAGE";
     //分页查询最新的图片
     public final static String INQUIRE_IMAGE_PAGE = "INQUIRE_IMAGE_PAGE";
     //图片点赞
