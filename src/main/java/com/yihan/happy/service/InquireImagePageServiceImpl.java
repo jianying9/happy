@@ -22,7 +22,7 @@ import java.util.List;
         page = true,
         responseConfigs = {
     @ResponseConfig(name = "id", typeEnum = TypeEnum.CHAR_32, desc = "图片id"),
-    @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
+    @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_60, desc = "标题"),
     @ResponseConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @ResponseConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
     @ResponseConfig(name = "url", typeEnum = TypeEnum.CHAR_255, desc = "本地原始图片url,还没有下载本地时为空"),

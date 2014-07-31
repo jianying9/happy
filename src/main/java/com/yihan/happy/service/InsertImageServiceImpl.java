@@ -20,7 +20,7 @@ import java.util.Map;
 @ServiceConfig(
         actionName = ActionNames.INSERT_IMAGE,
         requestConfigs = {
-    @RequestConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
+    @RequestConfig(name = "title", typeEnum = TypeEnum.CHAR_60, desc = "标题"),
     @RequestConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @RequestConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
     @RequestConfig(name = "height", typeEnum = TypeEnum.LONG, desc = "图片高"),
