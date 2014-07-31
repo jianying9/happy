@@ -34,7 +34,7 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
 
-    @Test
+//    @Test
     public void testUpdateImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("page", "2");
@@ -59,7 +59,7 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
 
-    @Test
+//    @Test
     public void testInsertImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("title", "test");
@@ -68,7 +68,17 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         parameterMap.put("height", "300");
         parameterMap.put("width", "200");
         parameterMap.put("picurl", "test");
+        parameterMap.put("password", "bigcodebang");
         Response response = this.testHandler.execute(ActionNames.INSERT_IMAGE, parameterMap);
+        System.out.println(response.getResponseMessage());
+    }
+    
+    @Test
+    public void testDeleteImage() {
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("id", "300004");
+        parameterMap.put("password", "bigcodebang");
+        Response response = this.testHandler.execute(ActionNames.DELETE_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
 }
