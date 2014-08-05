@@ -58,26 +58,26 @@ public class UserJUnitTest extends AbstractHappyTest {
     }
     
 //    @Test
-    public void testUpdateDuomenAndroidPoint() {
+    public void testUpdateAndroidPoint() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("duomenAndroidPoint", "600000");
-        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_ANDORID_POINT, parameterMap);
+        parameterMap.put("androidPoint", "600000");
+        Response response = this.testHandler.execute(ActionNames.UPDATE_ANDROID_POINT, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
 //    @Test
-    public void testUpdateDuomenIosPoint() {
+    public void testUpdateIosPoint() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("duomenIosPoint", "100");
-        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_IOS_POINT, parameterMap);
+        parameterMap.put("iosPoint", "100");
+        Response response = this.testHandler.execute(ActionNames.UPDATE_IOS_POINT, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
 //    @Test
-    public void testUpdateDuomenPointHistory() {
+    public void testUpdatePointHistory() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("password", "bigcodebang");
-        Response response = this.testHandler.execute(ActionNames.UPDATE_DUOMEN_POINT_HISTORY, parameterMap);
+        Response response = this.testHandler.execute(ActionNames.UPDATE_POINT_HISTORY, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
@@ -85,7 +85,7 @@ public class UserJUnitTest extends AbstractHappyTest {
     public void testOrderForMoneyFormAndroid() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("zfb", "bigcodebang@163.com");
-        parameterMap.put("duomenAndroidPoint", "100");
+        parameterMap.put("androidPoint", "100");
         Response response = this.testHandler.execute(ActionNames.ORDER_FOR_MONEY_FROM_ANDROID, parameterMap);
         System.out.println(response.getResponseMessage());
     }
@@ -94,7 +94,7 @@ public class UserJUnitTest extends AbstractHappyTest {
     public void testOrderForMoneyFormIos() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("zfb", "bigcodebang@163.com");
-        parameterMap.put("duomenIosPoint", "100");
+        parameterMap.put("iosPoint", "100");
         Response response = this.testHandler.execute(ActionNames.ORDER_FOR_MONEY_FROM_IOS, parameterMap);
         System.out.println(response.getResponseMessage());
     }
@@ -103,21 +103,21 @@ public class UserJUnitTest extends AbstractHappyTest {
     public void testOrderForPhoneBillFormAndroid() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("cellPhone", "13459118551");
-        parameterMap.put("duomenAndroidPoint", "100");
+        parameterMap.put("androidPoint", "100");
         Response response = this.testHandler.execute(ActionNames.ORDER_FOR_PHONE_BILL_FROM_ANDROID, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
-//    @Test
+    @Test
     public void testOrderForPhoneBillFormIos() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("cellPhone", "13459118551");
-        parameterMap.put("duomenIosPoint", "100");
+        parameterMap.put("iosPoint", "100");
         Response response = this.testHandler.execute(ActionNames.ORDER_FOR_PHONE_BILL_FROM_IOS, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testFinishOrder() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("orderId", "100001");

@@ -6,8 +6,6 @@ import com.wolf.framework.service.ResponseState;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
 import com.wolf.framework.service.parameter.RequestConfig;
-import com.wolf.framework.session.Session;
-import com.wolf.framework.session.SessionImpl;
 import com.wolf.framework.task.InjectTaskExecutor;
 import com.wolf.framework.task.Task;
 import com.wolf.framework.task.TaskExecutor;
@@ -25,7 +23,7 @@ import java.util.Map;
  * @author aladdin
  */
 @ServiceConfig(
-        actionName = ActionNames.UPDATE_DUOMEN_POINT_HISTORY,
+        actionName = ActionNames.UPDATE_POINT_HISTORY,
         requestConfigs = {
             @RequestConfig(name = "password", typeEnum = TypeEnum.CHAR_32, desc = "密码")
         },
@@ -35,8 +33,8 @@ import java.util.Map;
         validateSession = false,
         response = true,
         group = ActionGroupNames.USER,
-        desc = "更新用户当天的多盟积分信息，每天的凌晨2点到6点之间运行")
-public class UpdateDuomenPointHistoryServiceImpl implements Service {
+        desc = "更新用户当天的积分信息，每天的凌晨2点到6点之间运行")
+public class UpdatePointHistoryServiceImpl implements Service {
 
     //
     @InjectLocalService()
@@ -68,19 +66,19 @@ public class UpdateDuomenPointHistoryServiceImpl implements Service {
             long pageIndex = 1;
             long pageSize = 500;
             String lastDateId;
-            Map<String, String> duomenPointHistoryEntityMap = new HashMap<String, String>(4, 1);
+            Map<String, String> pointHistoryEntityMap = new HashMap<String, String>(4, 1);
             List<UserEntity> userEntityList = userLocalService.inquireUserEntityList(pageIndex, pageSize);
             while (userEntityList.isEmpty() == false) {
                 //
-                System.out.println("UPDATE_DUOMEN_POINT_HISTORY-pageIndex:".concat(Long.toString(pageIndex)));
+                System.out.println("UPDATE_POINT_HISTORY-pageIndex:".concat(Long.toString(pageIndex)));
                 //记录前一天的用户历史积分记录，如果用户之前从来没有发生积分相关操作，则跳过
                 for (UserEntity userEntity : userEntityList) {
-                    if (userEntity.getDuomenAndroidPoint() >= 0 || userEntity.getDuomenIosPoint() >= 0) {
-                        lastDateId = userLocalService.getDuomenPointHistoryLastDateId(userEntity.getId());
-                        duomenPointHistoryEntityMap.put("dateId", lastDateId);
-                        duomenPointHistoryEntityMap.put("duomenAndroidPoint", Long.toString(userEntity.getDuomenAndroidPoint()));
-                        duomenPointHistoryEntityMap.put("duomenIosPoint", Long.toString(userEntity.getDuomenIosPoint()));
-                        userLocalService.insertDuomenPointHistory(duomenPointHistoryEntityMap);
+                    if (userEntity.getAndroidPoint() >= 0 || userEntity.getIosPoint() >= 0) {
+                        lastDateId = userLocalService.getPointHistoryLastDateId(userEntity.getId());
+                        pointHistoryEntityMap.put("dateId", lastDateId);
+                        pointHistoryEntityMap.put("androidPoint", Long.toString(userEntity.getAndroidPoint()));
+                        pointHistoryEntityMap.put("iosPoint", Long.toString(userEntity.getIosPoint()));
+                        userLocalService.insertPointHistory(pointHistoryEntityMap);
                     }
                 }
                 //查询下一页用户信息

@@ -8,7 +8,7 @@ import com.wolf.framework.local.LocalServiceConfig;
 import com.wolf.framework.utils.TimeUtils;
 import com.yihan.happy.config.TableNames;
 import com.yihan.happy.localservice.KeyLocalService;
-import com.yihan.happy.user.entity.DuomenPointHistoryEntity;
+import com.yihan.happy.user.entity.PointHistoryEntity;
 import com.yihan.happy.user.entity.OrderEntity;
 import com.yihan.happy.user.entity.SinaUserMapEntity;
 import com.yihan.happy.user.entity.UserEntity;
@@ -39,8 +39,8 @@ public class UserLocalServiceImpl implements UserLocalService {
     @InjectLocalService()
     private KeyLocalService keyLocalService;
     //
-    @InjectRDao(clazz = DuomenPointHistoryEntity.class)
-    private REntityDao<DuomenPointHistoryEntity> duomenPointHistoryEntityDao;
+    @InjectRDao(clazz = PointHistoryEntity.class)
+    private REntityDao<PointHistoryEntity> pointHistoryEntityDao;
 
     @Override
     public void init() {
@@ -75,7 +75,7 @@ public class UserLocalServiceImpl implements UserLocalService {
         }
         return id;
     }
-    
+
     @Override
     public List<UserEntity> inquireUserEntityList(long pageIndex, long pageSize) {
         InquirePageContext inquirePageContext = new InquirePageContext();
@@ -88,7 +88,7 @@ public class UserLocalServiceImpl implements UserLocalService {
     public void addFavoriteImage(String id, String imageId) {
         this.userEntityDao.sortedSetAdd(id, "favoriteImages", imageId, System.currentTimeMillis());
     }
-    
+
     @Override
     public void deleteFavoriteImage(String id, String imageId) {
         this.userEntityDao.sortedSetRemove(id, "favoriteImages", imageId);
@@ -100,22 +100,23 @@ public class UserLocalServiceImpl implements UserLocalService {
     }
 
     @Override
-    public void updateDuomenAndroidPoint(String id, String duomenAndroidPoint) {
+    public void updateAndroidPoint(String id, String androidPoint) {
         Map<String, String> entityMap = new HashMap<String, String>(2, 1);
         entityMap.put("id", id);
-        entityMap.put("duomenAndroidPoint", duomenAndroidPoint);
+        entityMap.put("androidPoint", androidPoint);
         this.userEntityDao.update(entityMap);
     }
 
     /**
-     * 获取history dataId.dataId = yyyy-mm-dd + '_' + id
+     * 获取history dateId = yyyy-mm-dd + '_' + id
+     *
      * @param id
-     * @return 
+     * @return
      */
     @Override
-    public String getDuomenPointHistoryLastDateId(String id) {
+    public String getPointHistoryLastDateId(String id) {
         //计算前一天的日期
-        Calendar  currentTime  =  Calendar.getInstance();
+        Calendar currentTime = Calendar.getInstance();
         currentTime.add(Calendar.DAY_OF_MONTH, -1);
         Date currentDate = currentTime.getTime();
         String dataStr = TimeUtils.FM_YYMMDD.format(currentDate);
@@ -125,50 +126,50 @@ public class UserLocalServiceImpl implements UserLocalService {
     }
 
     @Override
-    public long inquireLastTodayDuomenAndroidPoint(String id) {
+    public long inquireLastdayAndroidPoint(String id) {
         long lastAndroidPoint = 0;
         //计算前一天的日期
-        String lastDateId = this.getDuomenPointHistoryLastDateId(id);
-        DuomenPointHistoryEntity duomenPointHistoryEntity = this.duomenPointHistoryEntityDao.inquireByKey(lastDateId);
-        if(duomenPointHistoryEntity != null) {
-            lastAndroidPoint = duomenPointHistoryEntity.getDuomenAndroidPoint();
+        String lastDateId = this.getPointHistoryLastDateId(id);
+        PointHistoryEntity pointHistoryEntity = this.pointHistoryEntityDao.inquireByKey(lastDateId);
+        if (pointHistoryEntity != null) {
+            lastAndroidPoint = pointHistoryEntity.getAndroidPoint();
         }
         return lastAndroidPoint;
     }
 
     @Override
-    public void updateDuomenIosPoint(String id, String duomenIosPoint) {
+    public void updateIosPoint(String id, String iosPoint) {
         Map<String, String> entityMap = new HashMap<String, String>(2, 1);
         entityMap.put("id", id);
-        entityMap.put("duomenIosPoint", duomenIosPoint);
+        entityMap.put("iosPoint", iosPoint);
         this.userEntityDao.update(entityMap);
     }
-    
+
     @Override
-    public long inquireLastTodayDuomenIosPoint(String id) {
+    public long inquireLastdayIosPoint(String id) {
         long lastIosPoint = 0;
         //计算前一天的日期
-        String lastDateId = this.getDuomenPointHistoryLastDateId(id);
-        DuomenPointHistoryEntity duomenPointHistoryEntity = this.duomenPointHistoryEntityDao.inquireByKey(lastDateId);
-        if(duomenPointHistoryEntity != null) {
-            lastIosPoint = duomenPointHistoryEntity.getDuomenIosPoint();
+        String lastDateId = this.getPointHistoryLastDateId(id);
+        PointHistoryEntity pointHistoryEntity = this.pointHistoryEntityDao.inquireByKey(lastDateId);
+        if (pointHistoryEntity != null) {
+            lastIosPoint = pointHistoryEntity.getIosPoint();
         }
         return lastIosPoint;
     }
-    
+
     @Override
-    public List<DuomenPointHistoryEntity> inquireUserDuomenPointHistory(String id) {
+    public List<PointHistoryEntity> inquireUserPointHistory(String id) {
         //TODO
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void insertDuomenPointHistory(Map<String, String> historyEntityMap) {
-        this.duomenPointHistoryEntityDao.insert(historyEntityMap);
+    public void insertPointHistory(Map<String, String> historyEntityMap) {
+        this.pointHistoryEntityDao.insert(historyEntityMap);
     }
 
     @Override
-    public String insertMoneyOrderFromAndroid(String userId, String zfb, String duomenAndroidPoint) {
+    public String insertMoneyOrderFromAndroid(String userId, String zfb, String androidPoint) {
         long newOrderId = this.keyLocalService.nextKeyValue(TableNames.Y_ORDER);
         String orderId = Long.toString(newOrderId);
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
@@ -176,7 +177,7 @@ public class UserLocalServiceImpl implements UserLocalService {
         entityMap.put("userId", userId);
         entityMap.put("type", UserLocalService.MONEY_ORDER_TYPE);
         entityMap.put("zfb", zfb);
-        entityMap.put("duomenAndroidPoint", duomenAndroidPoint);
+        entityMap.put("androidPoint", androidPoint);
         entityMap.put("state", UserLocalService.UN_FINISH_ORDER_STATE);
         String createTime = Long.toString(System.currentTimeMillis());
         entityMap.put("createTime", createTime);
@@ -185,7 +186,7 @@ public class UserLocalServiceImpl implements UserLocalService {
     }
 
     @Override
-    public String insertMoneyOrderFromIos(String userId, String zfb, String duomenIosPoint) {
+    public String insertMoneyOrderFromIos(String userId, String zfb, String iosPoint) {
         long newOrderId = this.keyLocalService.nextKeyValue(TableNames.Y_ORDER);
         String orderId = Long.toString(newOrderId);
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
@@ -193,7 +194,7 @@ public class UserLocalServiceImpl implements UserLocalService {
         entityMap.put("userId", userId);
         entityMap.put("type", UserLocalService.MONEY_ORDER_TYPE);
         entityMap.put("zfb", zfb);
-        entityMap.put("duomenIosPoint", duomenIosPoint);
+        entityMap.put("iosPoint", iosPoint);
         entityMap.put("state", UserLocalService.UN_FINISH_ORDER_STATE);
         String createTime = Long.toString(System.currentTimeMillis());
         entityMap.put("createTime", createTime);
@@ -202,7 +203,7 @@ public class UserLocalServiceImpl implements UserLocalService {
     }
 
     @Override
-    public String insertPhoneBillOrderFromAndroid(String userId, String cellPhone, String duomenAndroidPoint) {
+    public String insertPhoneBillOrderFromAndroid(String userId, String cellPhone, String androidPoint) {
         long newOrderId = this.keyLocalService.nextKeyValue(TableNames.Y_ORDER);
         String orderId = Long.toString(newOrderId);
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
@@ -210,7 +211,7 @@ public class UserLocalServiceImpl implements UserLocalService {
         entityMap.put("userId", userId);
         entityMap.put("type", UserLocalService.PHONE_BILL_ORDER_TYPE);
         entityMap.put("cellPhone", cellPhone);
-        entityMap.put("duomenAndroidPoint", duomenAndroidPoint);
+        entityMap.put("androidPoint", androidPoint);
         entityMap.put("state", UserLocalService.UN_FINISH_ORDER_STATE);
         String createTime = Long.toString(System.currentTimeMillis());
         entityMap.put("createTime", createTime);
@@ -219,7 +220,7 @@ public class UserLocalServiceImpl implements UserLocalService {
     }
 
     @Override
-    public String insertPhoneBillOrderFromIos(String userId, String cellPhone, String duomenIosPoint) {
+    public String insertPhoneBillOrderFromIos(String userId, String cellPhone, String iosPoint) {
         long newOrderId = this.keyLocalService.nextKeyValue(TableNames.Y_ORDER);
         String orderId = Long.toString(newOrderId);
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
@@ -227,7 +228,7 @@ public class UserLocalServiceImpl implements UserLocalService {
         entityMap.put("userId", userId);
         entityMap.put("type", UserLocalService.PHONE_BILL_ORDER_TYPE);
         entityMap.put("cellPhone", cellPhone);
-        entityMap.put("duomenIosPoint", duomenIosPoint);
+        entityMap.put("iosPoint", iosPoint);
         entityMap.put("state", UserLocalService.UN_FINISH_ORDER_STATE);
         String createTime = Long.toString(System.currentTimeMillis());
         entityMap.put("createTime", createTime);

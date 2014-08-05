@@ -24,11 +24,11 @@ public final class UserEntity extends Entity {
     @RColumnConfig(desc = "sina用户id")
     private String sinaId;
     //
-    @RColumnConfig(desc = "duomen的android的积分", defaultValue = "0")
-    private long duomenAndroidPoint;
+    @RColumnConfig(desc = "android的积分", defaultValue = "0")
+    private long androidPoint;
     //
-    @RColumnConfig(desc = "duomen的ios的积分", defaultValue = "0")
-    private long duomenIosPoint;
+    @RColumnConfig(desc = "ios的积分", defaultValue = "0")
+    private long iosPoint;
     //
     @Override
     public String getKeyValue() {
@@ -43,12 +43,12 @@ public final class UserEntity extends Entity {
         return sinaId;
     }
 
-    public long getDuomenAndroidPoint() {
-        return duomenAndroidPoint;
+    public long getAndroidPoint() {
+        return androidPoint;
     }
 
-    public long getDuomenIosPoint() {
-        return duomenIosPoint;
+    public long getIosPoint() {
+        return iosPoint;
     }
     
     @Override
@@ -56,8 +56,8 @@ public final class UserEntity extends Entity {
         Map<String, String> map = new HashMap<String, String>(4, 1);
         map.put("id", this.id);
         map.put("sinaId", this.sinaId);
-        map.put("duomenAndroidPoint", Long.toString(this.duomenAndroidPoint));
-        map.put("duomenIosPoint", Long.toString(this.duomenIosPoint));
+        map.put("androidPoint", Long.toString(this.androidPoint));
+        map.put("iosPoint", Long.toString(this.iosPoint));
         return map;
     }
 
@@ -65,7 +65,7 @@ public final class UserEntity extends Entity {
     protected void parseMap(Map<String, String> entityMap) {
         this.id = entityMap.get("id");
         this.sinaId = entityMap.get("sinaId");
-        this.duomenAndroidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
-        this.duomenIosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
+        this.androidPoint = Long.parseLong(entityMap.get("androidPoint"));
+        this.iosPoint = Long.parseLong(entityMap.get("iosPoint"));
     }
 }

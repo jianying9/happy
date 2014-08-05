@@ -16,9 +16,9 @@ import com.yihan.happy.user.localservice.UserLocalService;
  * @author jianying9
  */
 @ServiceConfig(
-        actionName = ActionNames.UPDATE_DUOMEN_IOS_POINT,
+        actionName = ActionNames.UPDATE_ANDROID_POINT,
         requestConfigs = {
-            @RequestConfig(name = "duomenIosPoint", typeEnum = TypeEnum.LONG, desc = "当前用户多盟ios积分")
+            @RequestConfig(name = "androidPoint", typeEnum = TypeEnum.LONG, desc = "当前用户android积分")
         },
         responseStates = {
             @ResponseState(state = "SUCCESS", desc = "更新成功，且积分变化正常"),
@@ -27,8 +27,8 @@ import com.yihan.happy.user.localservice.UserLocalService;
         validateSession = true,
         response = true,
         group = ActionGroupNames.USER,
-        desc = "更新用户多盟ios积分")
-public class UpdateDuomenIosPointServiceImpl implements Service {
+        desc = "更新用户android积分")
+public class UpdateAndroidPointServiceImpl implements Service {
 
     //
     @InjectLocalService()
@@ -36,13 +36,13 @@ public class UpdateDuomenIosPointServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-        String duomenIosPoint = messageContext.getParameter("duomenIosPoint");
+        String androidPoint = messageContext.getParameter("androidPoint");
         String id = messageContext.getSession().getSid();
-        //更新多盟当前积分
-        this.userLocalService.updateDuomenIosPoint(id, duomenIosPoint);
-        //获取用户当天多盟的用户积分，与当前提交的积分比较，判断积分增长是否达到5000分。如果大等于5000分，则提示客户端禁止用户赚取积分
-        long lastDuomenIosPoint = this.userLocalService.inquireLastTodayDuomenIosPoint(id);
-        if(Long.parseLong(duomenIosPoint) - lastDuomenIosPoint >= 3000) {
+        //更新当前积分
+        this.userLocalService.updateAndroidPoint(id, androidPoint);
+        //获取用户昨天最后积分，与当前提交的积分比较，判断积分增长是否达到5000分。如果大等于5000分，则提示客户端禁止用户赚取积分
+        long lastAndroidPoint = this.userLocalService.inquireLastdayAndroidPoint(id);
+        if(Long.parseLong(androidPoint) - lastAndroidPoint >= 3000) {
             messageContext.setState("MAX_DAY_POINT");
         } else {
             messageContext.success();

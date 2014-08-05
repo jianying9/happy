@@ -9,7 +9,5 @@ import javax.ejb.Local;
 @Local
 public interface TimerSessionBeanLocal {
 
-    public void updateImage();
-    
     public void updateDuomenPointHistory();
 }

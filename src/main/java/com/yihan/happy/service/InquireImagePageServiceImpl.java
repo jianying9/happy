@@ -25,10 +25,14 @@ import java.util.List;
     @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_60, desc = "标题"),
     @ResponseConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @ResponseConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
-    @ResponseConfig(name = "url", typeEnum = TypeEnum.CHAR_255, desc = "本地原始图片url,还没有下载本地时为空"),
-    @ResponseConfig(name = "height", typeEnum = TypeEnum.LONG, desc = "图片高"),
-    @ResponseConfig(name = "width", typeEnum = TypeEnum.LONG, desc = "图片宽"),
-    @ResponseConfig(name = "picurl", typeEnum = TypeEnum.CHAR_255, desc = "图片链接")
+    @ResponseConfig(name = "fileName", typeEnum = TypeEnum.CHAR_255, desc = "sina图片文件名称"),
+    @ResponseConfig(name = "length", typeEnum = TypeEnum.LONG, desc = "大图片字节大小"),
+    @ResponseConfig(name = "lHeight", typeEnum = TypeEnum.LONG, desc = "大图高"),
+    @ResponseConfig(name = "lWidth", typeEnum = TypeEnum.LONG, desc = "大图宽"),
+    @ResponseConfig(name = "mHeight", typeEnum = TypeEnum.LONG, desc = "中图高"),
+    @ResponseConfig(name = "mWidth", typeEnum = TypeEnum.LONG, desc = "中图宽"),
+    @ResponseConfig(name = "sHeight", typeEnum = TypeEnum.LONG, desc = "小图高"),
+    @ResponseConfig(name = "sWidth", typeEnum = TypeEnum.LONG, desc = "小图宽")
 },
         responseStates = {
     @ResponseState(state = "SUCCESS", desc = "查询成功")

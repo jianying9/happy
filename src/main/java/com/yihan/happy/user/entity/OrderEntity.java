@@ -32,11 +32,11 @@ public final class OrderEntity extends Entity {
     @RColumnConfig(desc = "手机号")
     private String cellPhone;
     //
-    @RColumnConfig(desc = "消费duomen的android的积分", defaultValue = "0")
-    private long duomenAndroidPoint;
+    @RColumnConfig(desc = "消费android的积分", defaultValue = "0")
+    private long androidPoint;
     //
-    @RColumnConfig(desc = "消费duomen的ios的积分", defaultValue = "0")
-    private long duomenIosPoint;
+    @RColumnConfig(desc = "消费ios的积分", defaultValue = "0")
+    private long iosPoint;
     //
     @RColumnConfig(desc = "状态:0-未处理,1-已处理")
     private String state;
@@ -75,12 +75,12 @@ public final class OrderEntity extends Entity {
         return cellPhone;
     }
 
-    public long getDuomenAndroidPoint() {
-        return duomenAndroidPoint;
+    public long getAndroidPoint() {
+        return androidPoint;
     }
 
-    public long getDuomenIosPoint() {
-        return duomenIosPoint;
+    public long getIosPoint() {
+        return iosPoint;
     }
 
     public String getState() {
@@ -107,8 +107,8 @@ public final class OrderEntity extends Entity {
         map.put("type", this.type);
         map.put("zfb", this.zfb);
         map.put("cellPhone", this.cellPhone);
-        map.put("duomenAndroidPoint", Long.toString(this.duomenAndroidPoint));
-        map.put("duomenIosPoint", Long.toString(this.duomenIosPoint));
+        map.put("androidPoint", Long.toString(this.androidPoint));
+        map.put("iosPoint", Long.toString(this.iosPoint));
         map.put("state", this.state);
         map.put("note", this.note);
         map.put("createTime", this.createTime);
@@ -123,8 +123,8 @@ public final class OrderEntity extends Entity {
         this.type = entityMap.get("type");
         this.zfb = entityMap.get("zfb");
         this.cellPhone = entityMap.get("cellPhone");
-        this.duomenAndroidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
-        this.duomenIosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
+        this.androidPoint = Long.parseLong(entityMap.get("androidPoint"));
+        this.iosPoint = Long.parseLong(entityMap.get("iosPoint"));
         this.state = entityMap.get("state");
         this.note = entityMap.get("note");
         this.createTime = entityMap.get("createTime");

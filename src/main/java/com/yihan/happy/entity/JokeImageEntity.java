@@ -29,17 +29,29 @@ public final class JokeImageEntity extends Entity {
     @RColumnConfig(desc = "踩的次数")
     private long voteDown;
     //
-    @RColumnConfig(desc = "本地原始图片链接")
-    private String url;
+    @RColumnConfig(desc = "sina图片名称")
+    private String fileName;
     //
-    @RColumnConfig(desc = "原始图片高")
-    private long height;
+    @RColumnConfig(desc = "大图大小")
+    private long length;
     //
-    @RColumnConfig(desc = "原始图片宽")
-    private long width;
+    @RColumnConfig(desc = "大图高")
+    private long lHeight;
     //
-    @RColumnConfig(desc = "原始图片链接")
-    private String picurl;
+    @RColumnConfig(desc = "大图宽")
+    private long lWidth;
+    //
+    @RColumnConfig(desc = "中图高")
+    private long mHeight;
+    //
+    @RColumnConfig(desc = "中图宽")
+    private long mWidth;
+    //
+    @RColumnConfig(desc = "小图高")
+    private long sHeight;
+    //
+    @RColumnConfig(desc = "小图宽")
+    private long sWidth;
 
     @Override
     public String getKeyValue() {
@@ -53,10 +65,14 @@ public final class JokeImageEntity extends Entity {
         map.put("title", this.title);
         map.put("voteUp", Long.toString(this.voteUp));
         map.put("voteDown", Long.toString(this.voteDown));
-        map.put("url", this.url);
-        map.put("height", Long.toString(this.height));
-        map.put("width", Long.toString(this.width));
-        map.put("picurl", this.picurl);
+        map.put("fileName", this.fileName);
+        map.put("length", Long.toString(this.length));
+        map.put("lWidth", Long.toString(this.lWidth));
+        map.put("lHeight", Long.toString(this.lHeight));
+        map.put("mWidth", Long.toString(this.mWidth));
+        map.put("mHeight", Long.toString(this.mHeight));
+        map.put("sWidth", Long.toString(this.sWidth));
+        map.put("sHeight", Long.toString(this.sHeight));
         return map;
     }
 
@@ -66,9 +82,13 @@ public final class JokeImageEntity extends Entity {
         this.title = entityMap.get("title");
         this.voteUp = Long.parseLong(entityMap.get("voteUp"));
         this.voteDown = Long.parseLong(entityMap.get("voteDown"));
-        this.url = entityMap.get("url");
-        this.height = Long.parseLong(entityMap.get("height"));
-        this.width = Long.parseLong(entityMap.get("width"));
-        this.picurl = entityMap.get("picurl");
+        this.fileName = entityMap.get("fileName");
+        this.length = Long.parseLong(entityMap.get("length"));
+        this.lWidth = Long.parseLong(entityMap.get("lWidth"));
+        this.lHeight = Long.parseLong(entityMap.get("lHeight"));
+        this.mWidth = Long.parseLong(entityMap.get("mWidth"));
+        this.mHeight = Long.parseLong(entityMap.get("mHeight"));
+        this.sWidth = Long.parseLong(entityMap.get("sWidth"));
+        this.sHeight = Long.parseLong(entityMap.get("sHeight"));
     }
 }

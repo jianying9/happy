@@ -23,17 +23,21 @@ import java.util.Map;
     @RequestConfig(name = "title", typeEnum = TypeEnum.CHAR_60, desc = "标题"),
     @RequestConfig(name = "voteUp", typeEnum = TypeEnum.LONG, desc = "赞的次数"),
     @RequestConfig(name = "voteDown", typeEnum = TypeEnum.LONG, desc = "踩的次数"),
-    @RequestConfig(name = "height", typeEnum = TypeEnum.LONG, desc = "图片高"),
-    @RequestConfig(name = "width", typeEnum = TypeEnum.LONG, desc = "图片宽"),
-    @RequestConfig(name = "picurl", typeEnum = TypeEnum.CHAR_255, desc = "图片链接"),
-    @RequestConfig(name = "picurl", typeEnum = TypeEnum.CHAR_255, desc = "图片链接"),
+    @RequestConfig(name = "sinaUrl", typeEnum = TypeEnum.CHAR_255, desc = "sina大图片图片连接"),
+    @RequestConfig(name = "length", typeEnum = TypeEnum.LONG, desc = "大图片字节大小"),
+    @RequestConfig(name = "lWidth", typeEnum = TypeEnum.LONG, desc = "大图宽"),
+    @RequestConfig(name = "lHeight", typeEnum = TypeEnum.LONG, desc = "大图高"),
+    @RequestConfig(name = "mWidth", typeEnum = TypeEnum.LONG, desc = "中图宽"),
+    @RequestConfig(name = "mHeight", typeEnum = TypeEnum.LONG, desc = "中图高"),
+    @RequestConfig(name = "sWidth", typeEnum = TypeEnum.LONG, desc = "小图宽"),
+    @RequestConfig(name = "sHeight", typeEnum = TypeEnum.LONG, desc = "小图高"),
     @RequestConfig(name = "password", typeEnum = TypeEnum.CHAR_32, desc = "密码")
 },
         responseConfigs = {
     @ResponseConfig(name = "id", typeEnum = TypeEnum.CHAR_32, desc = "图片id")
 },
         responseStates = {
-    @ResponseState(state = "SUCCESS", desc = "更新成功"),
+    @ResponseState(state = "SUCCESS", desc = "新增成功"),
     @ResponseState(state = "FAILURE", desc = "密码错误")
 },
         validateSession = false,
@@ -51,6 +55,9 @@ public class InsertImageServiceImpl implements Service {
         Map<String, String> parameterMap = messageContext.getParameterMap();
         String password = parameterMap.get("password");
         if (password.equals("bigcodebang")) {
+            String sinaUrl = parameterMap.get("sinaUrl");
+            String fileName = sinaUrl.substring(sinaUrl.lastIndexOf("/") + 1, sinaUrl.length());
+            parameterMap.put("fileName", fileName);
             String id = this.jokeImageLocalService.insertImage(parameterMap);
             parameterMap.put("id", id);
             messageContext.setMapData(parameterMap);

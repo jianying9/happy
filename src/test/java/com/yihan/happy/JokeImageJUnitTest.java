@@ -26,20 +26,11 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
     }
     //
 
-//    @Test
+    @Test
     public void testInquireImagePage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("pageSize", "2");
         Response response = this.testHandler.execute(ActionNames.INQUIRE_IMAGE_PAGE, parameterMap);
-        System.out.println(response.getResponseMessage());
-    }
-
-//    @Test
-    public void testUpdateImage() {
-        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("page", "2");
-        parameterMap.put("password", "bigcodebang");
-        Response response = this.testHandler.execute(ActionNames.UPDATE_IMAGE_INFO, parameterMap);
         System.out.println(response.getResponseMessage());
     }
 
@@ -65,15 +56,20 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         parameterMap.put("title", "test");
         parameterMap.put("voteUp", "1");
         parameterMap.put("voteDown", "2");
-        parameterMap.put("height", "300");
-        parameterMap.put("width", "200");
-        parameterMap.put("picurl", "test");
+        parameterMap.put("sinaUrl", "http://ww1.sina.com/text/2222.jpg");
+        parameterMap.put("length", "1222");
+        parameterMap.put("lWidth", "600");
+        parameterMap.put("lHeight", "800");
+        parameterMap.put("mWidth", "440");
+        parameterMap.put("mHeight", "640");
+        parameterMap.put("sWidth", "67");
+        parameterMap.put("sHeight", "88");
         parameterMap.put("password", "bigcodebang");
         Response response = this.testHandler.execute(ActionNames.INSERT_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testDeleteImage() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("id", "300004");

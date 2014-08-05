@@ -9,22 +9,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 存放多盟积分的变化历史记录
+ * 存放积分的变化历史记录
  *
  * @author jianying9
  */
 @RDaoConfig(
-        tableName = TableNames.Y_DUOMEN_POINT_HISTORY)
-public final class DuomenPointHistoryEntity extends Entity {
+        tableName = TableNames.Y_POINT_HISTORY)
+public final class PointHistoryEntity extends Entity {
 
     @RColumnConfig(columnTypeEnum = ColumnTypeEnum.KEY, desc = "yyyy-mm-dd + '_' + 用户id")
     private String dateId;
     //
-    @RColumnConfig(desc = "duomen的android的积分", defaultValue = "0")
-    private long duomenAndroidPoint;
+    @RColumnConfig(desc = "android的积分", defaultValue = "0")
+    private long androidPoint;
     //
-    @RColumnConfig(desc = "duomen的ios的积分", defaultValue = "0")
-    private long duomenIosPoint;
+    @RColumnConfig(desc = "ios的积分", defaultValue = "0")
+    private long iosPoint;
     //
     @Override
     public String getKeyValue() {
@@ -35,27 +35,27 @@ public final class DuomenPointHistoryEntity extends Entity {
         return dateId;
     }
 
-    public long getDuomenAndroidPoint() {
-        return duomenAndroidPoint;
+    public long getAndroidPoint() {
+        return androidPoint;
     }
 
-    public long getDuomenIosPoint() {
-        return duomenIosPoint;
+    public long getIosPoint() {
+        return iosPoint;
     }
 
     @Override
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>(4, 1);
         map.put("dateId", this.dateId);
-        map.put("duomenAndroidPoint", Long.toString(this.duomenAndroidPoint));
-        map.put("duomenIosPoint", Long.toString(this.duomenIosPoint));
+        map.put("androidPoint", Long.toString(this.androidPoint));
+        map.put("iosPoint", Long.toString(this.iosPoint));
         return map;
     }
 
     @Override
     protected void parseMap(Map<String, String> entityMap) {
         this.dateId = entityMap.get("dateId");
-        this.duomenAndroidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
-        this.duomenIosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
+        this.androidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
+        this.iosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
     }
 }

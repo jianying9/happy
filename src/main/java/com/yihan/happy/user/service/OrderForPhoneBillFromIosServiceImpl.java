@@ -22,7 +22,7 @@ import java.util.Map;
         actionName = ActionNames.ORDER_FOR_PHONE_BILL_FROM_IOS,
         requestConfigs = {
     @RequestConfig(name = "cellPhone", typeEnum = TypeEnum.CHAR_60, desc = "手机号"),
-    @RequestConfig(name = "duomenIosPoint", typeEnum = TypeEnum.LONG, desc = "兑换的ios积分数量")
+    @RequestConfig(name = "iosPoint", typeEnum = TypeEnum.LONG, desc = "兑换的ios积分数量")
 },
         responseConfigs = {
     @ResponseConfig(name = "orderId", typeEnum = TypeEnum.LONG, desc = "订单id")
@@ -43,9 +43,9 @@ public class OrderForPhoneBillFromIosServiceImpl implements Service {
     @Override
     public void execute(MessageContext messageContext) {
         String cellPhone = messageContext.getParameter("cellPhone");
-        String duomenIosPoint = messageContext.getParameter("duomenIosPoint");
+        String iosPoint = messageContext.getParameter("iosPoint");
         String id = messageContext.getSession().getSid();
-        String orderId = this.userLocalService.insertPhoneBillOrderFromIos(id, cellPhone, duomenIosPoint);
+        String orderId = this.userLocalService.insertPhoneBillOrderFromIos(id, cellPhone, iosPoint);
         Map<String, String> resultMap = new HashMap<String, String>(2, 1);
         resultMap.put("orderId", orderId);
         messageContext.setMapData(resultMap);

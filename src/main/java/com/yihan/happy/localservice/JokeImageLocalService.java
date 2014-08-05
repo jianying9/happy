@@ -12,8 +12,6 @@ import java.util.Map;
  */
 public interface JokeImageLocalService extends Local {
 
-    public List<ImageInfo> getPage(long pageIndex);
-    
     public boolean existImage(String id);
     
     public String insertImage(Map<String, String> entityMap);
