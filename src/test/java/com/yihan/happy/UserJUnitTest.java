@@ -37,7 +37,7 @@ public class UserJUnitTest extends AbstractHappyTest {
 //    @Test
     public void testAddFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("imageId", "261455");
+        parameterMap.put("imageId", "300006");
         Response response = this.testHandler.execute(ActionNames.ADD_FAVORITE_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
@@ -50,7 +50,7 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-//    @Test
+    @Test
     public void testInquireFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         Response response = this.testHandler.execute(ActionNames.INQUIRE_FAVORITE_IMAGE, parameterMap);
@@ -108,7 +108,7 @@ public class UserJUnitTest extends AbstractHappyTest {
         System.out.println(response.getResponseMessage());
     }
     
-    @Test
+//    @Test
     public void testOrderForPhoneBillFormIos() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("cellPhone", "13459118551");
