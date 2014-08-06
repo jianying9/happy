@@ -57,11 +57,13 @@ public class JokeImageJUnitTest extends AbstractHappyTest {
         parameterMap.put("voteUp", "1");
         parameterMap.put("voteDown", "2");
         parameterMap.put("sinaUrl", "http://ww1.sina.com/text/2222.jpg");
-        parameterMap.put("length", "1222");
+        parameterMap.put("lLength", "1222");
         parameterMap.put("lWidth", "600");
         parameterMap.put("lHeight", "800");
+        parameterMap.put("mLength", "822");
         parameterMap.put("mWidth", "440");
         parameterMap.put("mHeight", "640");
+        parameterMap.put("sLength", "822");
         parameterMap.put("sWidth", "67");
         parameterMap.put("sHeight", "88");
         parameterMap.put("password", "bigcodebang");

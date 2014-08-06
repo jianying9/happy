@@ -37,7 +37,7 @@ public class UserJUnitTest extends AbstractHappyTest {
 //    @Test
     public void testAddFavoriteIamge() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("imageId", "300006");
+        parameterMap.put("imageId", "300007");
         Response response = this.testHandler.execute(ActionNames.ADD_FAVORITE_IMAGE, parameterMap);
         System.out.println(response.getResponseMessage());
     }
