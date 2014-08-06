@@ -55,7 +55,7 @@ public final class PointHistoryEntity extends Entity {
     @Override
     protected void parseMap(Map<String, String> entityMap) {
         this.dateId = entityMap.get("dateId");
-        this.androidPoint = Long.parseLong(entityMap.get("duomenAndroidPoint"));
-        this.iosPoint = Long.parseLong(entityMap.get("duomenIosPoint"));
+        this.androidPoint = Long.parseLong(entityMap.get("androidPoint"));
+        this.iosPoint = Long.parseLong(entityMap.get("iosPoint"));
     }
 }

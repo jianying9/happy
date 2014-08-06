@@ -5,7 +5,7 @@ package com.yihan.happy.config;
  * @author aladdin
  */
 public class ActionNames {
-    
+
     //-----------------------图片爬虫------------------------//
     //新增图片
     public final static String INSERT_IMAGE = "INSERT_IMAGE";
@@ -27,13 +27,13 @@ public class ActionNames {
     //定时记录用户的当天的积分情况
     public final static String UPDATE_POINT_HISTORY = "UPDATE_POINT_HISTORY";
     //android积分提现
-    public final static String ORDER_FOR_MONEY_FROM_ANDROID= "ORDER_FOR_MONEY_FROM_ANDROID";
+    public final static String ORDER_FOR_MONEY_FROM_ANDROID = "ORDER_FOR_MONEY_FROM_ANDROID";
     //ios积分提现
-    public final static String ORDER_FOR_MONEY_FROM_IOS= "ORDER_FOR_MONEY_FROM_IOS";
+    public final static String ORDER_FOR_MONEY_FROM_IOS = "ORDER_FOR_MONEY_FROM_IOS";
     //android积分充值话费
-    public final static String ORDER_FOR_PHONE_BILL_FROM_ANDROID= "ORDER_FOR_PHONE_BILL_FROM_ANDROID";
+    public final static String ORDER_FOR_PHONE_BILL_FROM_ANDROID = "ORDER_FOR_PHONE_BILL_FROM_ANDROID";
     //IOS积分充值话费
-    public final static String ORDER_FOR_PHONE_BILL_FROM_IOS= "ORDER_FOR_PHONE_BILL_FROM_IOS";
+    public final static String ORDER_FOR_PHONE_BILL_FROM_IOS = "ORDER_FOR_PHONE_BILL_FROM_IOS";
     //完成订单
     public final static String FINISH_ORDER = "FINISH_ORDER";
     //订单信息错误，提示客户修改补充相关信息
@@ -44,4 +44,17 @@ public class ActionNames {
     public final static String DELETE_FAVORITE_IMAGE = "DELETE_FAVORITE_IMAGE";
     //查看我的收藏图片
     public final static String INQUIRE_FAVORITE_IMAGE = "INQUIRE_FAVORITE_IMAGE";
+    //------------------------系统配置---------------------------//
+    //获取ios配置
+    public final static String INQUIRE_IOS_CONFIG = "INQUIRE_IOS_CONFIG";
+    //修改ios配置
+    public final static String UPDATE_IOS_CONFIG = "UPDATE_IOS_CONFIG";
+    //开启ios积分服务
+    public final static String OPEN_IOS_POINT = "OPEN_IOS_POINT";
+    //关闭ios积分服务
+    public final static String CLOSE_IOS_POINT = "CLOSE_IOS_POINT";
+    //获取android配置
+    public final static String INQUIRE_ANDROID_CONFIG = "INQUIRE_ANDROID_CONFIG";
+    //修改android的配置
+    public final static String UPDATE_ANDROID_CONFIG = "UPDATE_ANDROID_CONFIG";
 }

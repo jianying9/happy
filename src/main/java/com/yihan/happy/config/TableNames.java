@@ -20,4 +20,6 @@ public class TableNames {
     public final static String Y_SINA_USER_MAP = "Y_SINA_USER_MAP";
     //订单
     public final static String Y_ORDER = "Y_ORDER";
+    //系统服务配置
+    public final static String Y_SERVER_CONFIG = "Y_SERVER_CONFIG";
 }
