@@ -18,8 +18,9 @@ import com.yihan.happy.server.localservice.ServerLocalService;
 @ServiceConfig(
         actionName = ActionNames.UPDATE_ANDROID_CONFIG,
         requestConfigs = {
-    @RequestConfig(name = "androidVersion", typeEnum = TypeEnum.CHAR_32, desc = "版本"),
-    @RequestConfig(name = "androidUrl", typeEnum = TypeEnum.CHAR_255, desc = "下载链接")
+    @RequestConfig(name = "androidVersion", typeEnum = TypeEnum.CHAR_32, desc = "版本名称"),
+    @RequestConfig(name = "androidUrl", typeEnum = TypeEnum.CHAR_255, desc = "下载链接"),
+    @RequestConfig(name = "androidCode", typeEnum = TypeEnum.CHAR_255, desc = "版本号")
 },
         responseStates = {
     @ResponseState(state = "SUCCESS", desc = "修改成功")
@@ -38,7 +39,8 @@ public class UpdateAndroidConfigServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         String version = messageContext.getParameter("androidVersion");
         String url = messageContext.getParameter("androidUrl");
-        this.serverLocalService.updateAndroidVersionAndUrl(version, url);
+        String code = messageContext.getParameter("androidCode");
+        this.serverLocalService.updateAndroidConfig(version, url, code);
         messageContext.success();
     }
 }

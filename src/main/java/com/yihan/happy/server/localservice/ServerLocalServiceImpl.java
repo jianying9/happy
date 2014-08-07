@@ -30,8 +30,13 @@ public class ServerLocalServiceImpl implements ServerLocalService {
             configMap.put("name", ServerLocalService.ANDROID_URL);
             configMap.put("value", "http://www.bigcodebang.com/download.html");
             this.serverConfigEntityDao.insert(configMap);
+            //
             configMap.put("name", ServerLocalService.ANDROID_VERSION);
             configMap.put("value", "1.0");
+            this.serverConfigEntityDao.insert(configMap);
+            //
+            configMap.put("name", ServerLocalService.ANDROID_CODE);
+            configMap.put("value", "1");
             this.serverConfigEntityDao.insert(configMap);
         }
         //
@@ -40,9 +45,11 @@ public class ServerLocalServiceImpl implements ServerLocalService {
             configMap.put("name", ServerLocalService.IOS_URL);
             configMap.put("value", "http://www.bigcodebang.com/download.html");
             this.serverConfigEntityDao.insert(configMap);
+            //
             configMap.put("name", ServerLocalService.IOS_VERSION);
             configMap.put("value", "1.0");
             this.serverConfigEntityDao.insert(configMap);
+            //
             configMap.put("name", ServerLocalService.IOS_POINT_SWICH);
             configMap.put("value", "off");
             this.serverConfigEntityDao.insert(configMap);
@@ -80,11 +87,12 @@ public class ServerLocalServiceImpl implements ServerLocalService {
     }
 
     @Override
-    public void updateIosVersionAndUrl(String version, String url) {
+    public void updateIosConfig(String version, String url) {
         Map<String, String> configMap = new HashMap<String, String>(2, 1);
         configMap.put("name", ServerLocalService.IOS_URL);
         configMap.put("value", url);
         this.serverConfigEntityDao.update(configMap);
+        //
         configMap.put("name", ServerLocalService.IOS_VERSION);
         configMap.put("value", version);
         this.serverConfigEntityDao.update(configMap);
@@ -92,11 +100,12 @@ public class ServerLocalServiceImpl implements ServerLocalService {
 
     @Override
     public Map<String, String> inquireAndroidConfig() {
-        List<String> keyList = new ArrayList<String>(2);
+        List<String> keyList = new ArrayList<String>(3);
         keyList.add(ServerLocalService.ANDROID_URL);
         keyList.add(ServerLocalService.ANDROID_VERSION);
+        keyList.add(ServerLocalService.ANDROID_CODE);
         List<ServerConfigEntity> entityList = this.serverConfigEntityDao.inquireByKeys(keyList);
-        Map<String, String> configMap = new HashMap<String, String>(2, 1);
+        Map<String, String> configMap = new HashMap<String, String>(4, 1);
         for (ServerConfigEntity serverConfigEntity : entityList) {
             configMap.put(serverConfigEntity.getName(), serverConfigEntity.getValue());
         }
@@ -104,13 +113,18 @@ public class ServerLocalServiceImpl implements ServerLocalService {
     }
 
     @Override
-    public void updateAndroidVersionAndUrl(String version, String url) {
+    public void updateAndroidConfig(String version, String url, String code) {
         Map<String, String> configMap = new HashMap<String, String>(2, 1);
         configMap.put("name", ServerLocalService.ANDROID_URL);
         configMap.put("value", url);
         this.serverConfigEntityDao.update(configMap);
+        //
         configMap.put("name", ServerLocalService.ANDROID_VERSION);
         configMap.put("value", version);
+        this.serverConfigEntityDao.update(configMap);
+        //
+        configMap.put("name", ServerLocalService.ANDROID_CODE);
+        configMap.put("value", code);
         this.serverConfigEntityDao.update(configMap);
     }
 }

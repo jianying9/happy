@@ -9,8 +9,10 @@ import java.util.Map;
  */
 public interface ServerLocalService extends Local {
 
-    //android的版本号
+    //android的版本名称
     public String ANDROID_VERSION = "androidVersion";
+    //android的版本号
+    public String ANDROID_CODE = "androidCode";
     //android的下载地址
     public String ANDROID_URL = "androidUrl";
     
@@ -23,7 +25,7 @@ public interface ServerLocalService extends Local {
     
     public Map<String, String> inquireIosConfig();
     
-    public void updateIosVersionAndUrl(String version, String url);
+    public void updateIosConfig(String version, String url);
     
     public void openIosPointSwitch();
     
@@ -31,5 +33,5 @@ public interface ServerLocalService extends Local {
     
     public Map<String, String> inquireAndroidConfig();
     
-    public void updateAndroidVersionAndUrl(String version, String url);
+    public void updateAndroidConfig(String version, String url, String code);
 }

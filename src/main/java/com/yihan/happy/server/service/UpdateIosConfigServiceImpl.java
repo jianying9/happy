@@ -38,7 +38,7 @@ public class UpdateIosConfigServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         String version = messageContext.getParameter("iosVersion");
         String url = messageContext.getParameter("iosUrl");
-        this.serverLocalService.updateIosVersionAndUrl(version, url);
+        this.serverLocalService.updateIosConfig(version, url);
         messageContext.success();
     }
 }

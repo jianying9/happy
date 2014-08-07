@@ -19,8 +19,9 @@ import java.util.Map;
 @ServiceConfig(
         actionName = ActionNames.INQUIRE_ANDROID_CONFIG,
         responseConfigs = {
-    @ResponseConfig(name = "androidVersion", typeEnum = TypeEnum.CHAR_32, desc = "版本"),
-    @ResponseConfig(name = "androidUrl", typeEnum = TypeEnum.CHAR_255, desc = "下载链接")
+    @ResponseConfig(name = "androidVersion", typeEnum = TypeEnum.CHAR_32, desc = "版本名称"),
+    @ResponseConfig(name = "androidUrl", typeEnum = TypeEnum.CHAR_255, desc = "下载链接"),
+    @ResponseConfig(name = "androidCode", typeEnum = TypeEnum.CHAR_255, desc = "版本号")
 },
         responseStates = {
     @ResponseState(state = "SUCCESS", desc = "查询成功")

@@ -68,6 +68,7 @@ public class ServerJUnitTest extends AbstractHappyTest {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("androidUrl", "test");
         parameterMap.put("androidVersion", "2.0");
+        parameterMap.put("androidCode", "2");
         Response response = this.testHandler.execute(ActionNames.UPDATE_ANDROID_CONFIG, parameterMap);
         System.out.println(response.getResponseMessage());
     }
