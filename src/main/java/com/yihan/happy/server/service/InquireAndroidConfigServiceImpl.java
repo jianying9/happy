@@ -26,7 +26,7 @@ import java.util.Map;
         responseStates = {
     @ResponseState(state = "SUCCESS", desc = "查询成功")
 },
-        validateSession = true,
+        validateSession = false,
         response = true,
         group = ActionGroupNames.SERVER,
         desc = "获取android配置")
