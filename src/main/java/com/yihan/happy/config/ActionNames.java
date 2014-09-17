@@ -6,7 +6,7 @@ package com.yihan.happy.config;
  */
 public class ActionNames {
 
-    //-----------------------图片爬虫------------------------//
+    //-----------------------图片------------------------//
     //新增图片
     public final static String INSERT_IMAGE = "INSERT_IMAGE";
     //删除图片
@@ -17,6 +17,17 @@ public class ActionNames {
     public final static String VOTE_UP_IMAGE = "VOTE_UP_IMAGE";
     //图片点踩
     public final static String VOTE_DOWN_IMAGE = "VOTE_DOWN_IMAGE";
+    //-----------------------笑话段子------------------------//
+    //新增笑话
+    public final static String INSERT_JOKE = "INSERT_JOKE";
+    //删除笑话
+    public final static String DELETE_JOKE = "DELETE_JOKE";
+    //分页查询最新的笑话
+    public final static String INQUIRE_JOKE_PAGE = "INQUIRE_JOKE_PAGE";
+    //笑话点赞
+    public final static String VOTE_UP_JOKE = "VOTE_UP_JOKE";
+    //笑话点踩
+    public final static String VOTE_DOWN_JOKE = "VOTE_DOWN_JOKE";
     //------------------------用户---------------------------//
     //sina用户登录
     public final static String SINA_USER_LOGIN = "SINA_USER_LOGIN";

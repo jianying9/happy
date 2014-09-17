@@ -66,7 +66,7 @@ public final class JokeImageEntity extends Entity {
 
     @Override
     public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<String, String>(8, 1);
+        Map<String, String> map = new HashMap<String, String>(16, 1);
         map.put("id", this.id);
         map.put("title", this.title);
         map.put("voteUp", Long.toString(this.voteUp));

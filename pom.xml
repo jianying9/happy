@@ -40,6 +40,7 @@
     </dependencies>
 
     <build>
+        <finalName>happy</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -105,6 +106,27 @@
                     <!-- 压缩后输出文件目录 -->
                     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.4.9</version>
+                <configuration>
+                    <container>
+                        <containerId>glassfish3x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type>
+                    </configuration>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.glassfish.deployment</groupId>
+                        <artifactId>deployment-client</artifactId>
+                        <version>3.2-b06</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

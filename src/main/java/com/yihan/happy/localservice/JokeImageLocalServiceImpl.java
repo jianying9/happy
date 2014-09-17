@@ -32,7 +32,7 @@ public class JokeImageLocalServiceImpl implements JokeImageLocalService {
 
     @Override
     public void init() {
-        //初始化Y_USER主键
+        //初始化Y_JOKE_IMAGE主键
         long maxKeyValue = this.keyLocalService.getMaxKeyValue(TableNames.Y_JOKE_IMAGE);
         if (maxKeyValue < 300000) {
             this.keyLocalService.updateMaxKeyValue(TableNames.Y_JOKE_IMAGE, 300000);
